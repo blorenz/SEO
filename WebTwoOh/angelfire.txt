@@ -1,0 +1,5 @@
+SELECT/ID/LINK/Register
+CLICK
+SELECT/ID/FRAME/windowbox-content/iframe1
+SELECT/ID/TEXTFIELD/m_U
+TYPETEXT #NAME#

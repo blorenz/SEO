@@ -31,7 +31,6 @@ namespace WebTwoOh
 
             wb20 = new Web20();
             rand = new Random(Environment.TickCount);
-            changeProxy(wb20.getProxies()[rand.Next(24)]);
             webBrowser1.ScriptErrorsSuppressed = true;
             webBrowser1.Navigate("www.google.com");
             foreach (String line in wb20.getSites())
@@ -43,13 +42,63 @@ namespace WebTwoOh
             ie = new WatiN.Core.DialogHandlers.WebBrowserIE(webBrowser1);
 
         }
+      
 
-        private void changeProxy(String str)
+        private void testCase()
         {
-            RegistryKey registry = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings", true);
-            registry.SetValue("ProxyEnable", 0);
-            registry.SetValue("ProxyServer", str);
+            Dictionary<String, ElementWrap> dict = new Dictionary<string, ElementWrap>();
+            ScriptExecuter se = new ScriptExecuter();
+            se.loadScript("./scripts/angelfire.txt");
+            String[] ex = null;
+            while ((ex = se.getNext()) != null)
+            {
 
+                switch (Convert.ToInt32(ex[0]))
+                {
+                    case Commands.ACTSELECT:
+                        {
+                            switch (Convert.ToInt32(ex[1]))
+                            {
+                                case Commands.BYID:
+                                    {
+                                    }
+                                    break;
+                                case Commands.BYTEXT:
+                                    {
+                                        switch (Convert.ToInt32(ex[2]))
+                                        {
+                                            case Commands.ELLINK:
+                                                {
+                                                    dict.Add(ex[4], new ElementWrap(findByLinkText(ex[3], ie), Commands.ELLINK));
+                                                }
+                                                break;
+                                        }
+                                    }
+                                    break;
+                            }
+                        }
+                        break;
+
+                    case Commands.ACTCLICK:
+                        {
+                            ElementWrap wrap = dict[ex[1]];
+
+                            switch (wrap.type)
+                            {
+                                case Commands.ELLINK:
+                                    {
+                                        wrap.el.Click();
+                                    }
+                                    break;
+                            }
+                        }
+                        break;
+
+
+                }
+            }// end while
+
+            Int32 a = 0;
         }
 
         private void listViewSites_SelectedIndexChanged(object sender, EventArgs e)
@@ -64,6 +113,7 @@ namespace WebTwoOh
             var thread = new System.Threading.Thread(() =>
             {
                 ie.GoTo(siteToGoTo);
+                testCase();
             });
             thread.SetApartmentState(System.Threading.ApartmentState.STA);
             thread.Start();           
