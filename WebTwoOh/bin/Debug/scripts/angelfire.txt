@@ -1,6 +1,9 @@
-SELECT/TEXT/LINK/Register/reglink
-CLICK/reglink
+CLICK/TEXT/LINK/Register
 SELECT/ID/FRAME/windowbox-content/iframe1
-SWITCH/iframe1
-SELECT/ID/TEXTFIELD/m_U
-TYPETEXT/#NAME#
+TYPETEXT/ID/m_U/brandonisgood
+TYPETEXT/ID/m_P/brandonisgood2
+TYPETEXT/ID/m_PASSVERIFY/brandonisgood2
+TYPETEXT/ID/m_EMAIL/booo@email.com
+CLICK/ID/DIV/windowbox-wrapper
+CLICK/ID/DIV/windowbox-wrapper
+SELECTLIST/ID/m_BIRTHMONTH/March
