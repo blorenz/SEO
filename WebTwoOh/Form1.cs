@@ -9,21 +9,40 @@ using System.Windows.Forms;
 using HtmlAgilityPack;
 using WatiN.Core;
 using System.Configuration;
-using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium;
 using Microsoft.Win32;
 using System.Net;
+using WebProperties;
 
 namespace WebTwoOh
 {
     public partial class Form1 : System.Windows.Forms.Form
     {
-        private IWebDriver driver;
-        private StringBuilder verificationErrors;
-        private string baseURL;
-        private WatiN.Core.DialogHandlers.WebBrowserIE ie = null;
+  
+        private WatiN.Core.DialogHandlers.WebBrowserIE[] ie = new WatiN.Core.DialogHandlers.WebBrowserIE[2];
         Web20 wb20 = null;
         Random rand = null;
+        List<WebBrowser> webBrowsers = new List<WebBrowser>();
+
+        List<System.Threading.Thread> threadList = new List<System.Threading.Thread>();
+        Dictionary<String, WebProperties.baseWebProperty> dict = null;
+
+        private void ShowInTextBox(string theMessage)
+        {
+            richTextBox1.Text = theMessage;
+            Application.DoEvents();
+        }
+
+        public WebBrowser newWebBrowser()
+        {
+            WebBrowser wb = new WebBrowser();
+
+            wb.ScriptErrorsSuppressed = true;
+            wb.Navigate("www.google.com");
+            wb.Dock = DockStyle.Fill;
+            splitContainer1.Panel2.Controls.Add(wb);
+            return wb;
+        }
+
         public Form1()
         {
 
@@ -31,92 +50,104 @@ namespace WebTwoOh
 
             wb20 = new Web20();
             rand = new Random(Environment.TickCount);
-            webBrowser1.ScriptErrorsSuppressed = true;
-            webBrowser1.Navigate("www.google.com");
-            foreach (String line in wb20.getSites())
+
+
+            List<WebProperties.baseWebProperty> activeSites =  WebProperties.InitWebProperties.init();
+            dict = new Dictionary<string,baseWebProperty>();
+
+
+            foreach (var bp in activeSites)
             {
-                ListViewItem lvi = new ListViewItem(line.Trim());
-                //lvi.Text = "dfsdfsdF";
+                bp.logWindow = richTextBox1;
+                dict.Add(bp.getLabel(),bp);
+                ListViewItem lvi = new ListViewItem(bp.getLabel());
+                lvi.Name = bp.getLabel();
                 listViewSites.Items.Add(lvi);
             }
-            ie = new WatiN.Core.DialogHandlers.WebBrowserIE(webBrowser1);
 
+
+           
         }
-      
+   
 
-        private void testCase()
-        {
-            Dictionary<String, ElementWrap> dict = new Dictionary<string, ElementWrap>();
-            ScriptExecuter se = new ScriptExecuter();
-            se.loadScript("./scripts/angelfire.txt");
-            String[] ex = null;
-            while ((ex = se.getNext()) != null)
-            {
-
-                switch (Convert.ToInt32(ex[0]))
-                {
-                    case Commands.ACTSELECT:
-                        {
-                            switch (Convert.ToInt32(ex[1]))
-                            {
-                                case Commands.BYID:
-                                    {
-                                    }
-                                    break;
-                                case Commands.BYTEXT:
-                                    {
-                                        switch (Convert.ToInt32(ex[2]))
-                                        {
-                                            case Commands.ELLINK:
-                                                {
-                                                    dict.Add(ex[4], new ElementWrap(findByLinkText(ex[3], ie), Commands.ELLINK));
-                                                }
-                                                break;
-                                        }
-                                    }
-                                    break;
-                            }
-                        }
-                        break;
-
-                    case Commands.ACTCLICK:
-                        {
-                            ElementWrap wrap = dict[ex[1]];
-
-                            switch (wrap.type)
-                            {
-                                case Commands.ELLINK:
-                                    {
-                                        wrap.el.Click();
-                                    }
-                                    break;
-                            }
-                        }
-                        break;
+         private void DeleteCookies (WebBrowser wb) 
+         {
+             System.Diagnostics.Process.Start("rundll32.exe", "InetCpl.cpl,ClearMyTracksByProcess 2");
+         }
 
 
-                }
-            }// end while
+         private void setupAccount(out ProfileAccount account, String password)
+         {
+             account = new ProfileAccount();
+             AccountEmail email = new AccountEmail();
 
-            Int32 a = 0;
-        }
+             email.getRandomEmail("gmail.com");
+
+             account.getRandomString(ref account.username, 9);
+             account.getRandomString(ref account.nameFirst, 9);
+             account.getRandomString(ref account.nameLast, 9);
+
+             account.password = password;
+             account.postalCode = "90210";
+             account.city = "Beverly Hills";
+             account.stateOrProvince = "CA";
+             account.addressFirstLine = "1232 Belevue Ct";
+             account.email = email;
+
+             account.challengeQuestion1Answer = "Yourmom";
+             
+         }
 
         private void listViewSites_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewSites.SelectedItems.Count < 1)
                 return;
-            String siteToGoTo =  listViewSites.SelectedItems[0].Text;
+            String siteToGoTo =  listViewSites.SelectedItems[0].Name;
 
-            //webBrowser1.Navigate("javascript:void((function(){var a,b,c,e,f;f=0;a=document.cookie.split('; ');for(e=0;e<a.length&&a[e];e++){f++;for(b='.'+location.host;b;b=b.replace(/^(?:%5C.|[^%5C.]+)/,'')){for(c=location.pathname;c;c=c.replace(/.$/,'')){document.cookie=(a[e]+'; domain='+b+'; path='+c+'; expires='+new Date((new Date()).getTime()-1e11).toGMTString());}}}})())");
+           // Web20.PROXYSET(wb20.getProxies()[rand.Next(24)]);
+            String sc = listViewSites.SelectedItems[0].Name;
 
-            Web20.PROXYSET(wb20.getProxies()[rand.Next(24)]);
+            // Single-threaded while testing with one browser window
+                    while (webBrowsers.Count > 0)
+                    {
+                        splitContainer1.Panel2.Controls.RemoveAt(0);
+                        webBrowsers.RemoveAt(0);
+                    }
+                    webBrowsers.Add(newWebBrowser());
+                    ie[0] = new WatiN.Core.DialogHandlers.WebBrowserIE(webBrowsers[0]);
+            // Single-threaded while testing with one browser window
+
             var thread = new System.Threading.Thread(() =>
             {
-                ie.GoTo(siteToGoTo);
-                testCase();
+                WebProperties.ProfileAccount account = new ProfileAccount();
+                setupAccount(out account, dict[siteToGoTo].generatePassword(8));
+                dict[siteToGoTo].createProfile(ie[0], account);
             });
+
+            // Single-threaded while testing with one browser window
+                    while (threadList.Count > 0)
+                    {
+                        threadList[0].Abort();
+                        threadList.RemoveAt(0);
+                    }
+            // Single-threaded while testing with one browser window
+
             thread.SetApartmentState(System.Threading.ApartmentState.STA);
-            thread.Start();           
+            thread.Start();
+            threadList.Add(thread);
            }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            foreach (var thread in threadList)
+            {
+                thread.Abort();
+            }
+        }
     }
 }

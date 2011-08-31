@@ -1,0 +1,3 @@
+LOG_CONNECT_TO,Connecting to {0}
+LOG_SOLVING_CAPTCHA,Solving captcha...
+LOG_SOLVED_CAPTCHA,Solved captcha as '{0}'
