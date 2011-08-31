@@ -16,10 +16,21 @@ namespace WebProperties
         public static string symbols = "!@#$%^&*()";
     }
 
+    public class Email
+    {
+        public String subject;
+        public String to;
+        public String from;
+        public String body;
+    }
+
     public class AccountEmail
     {
+        public String mailhost = "";
+        public String emailLogin = "";
         public String emailAddress = "";
         public String emailPassword = "";
+        public Int32 mailport = 995;
 
         Random rand = new Random(Environment.TickCount);
 

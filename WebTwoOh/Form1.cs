@@ -51,6 +51,7 @@ namespace WebTwoOh
             wb20 = new Web20();
             rand = new Random(Environment.TickCount);
 
+           // 
 
             List<WebProperties.baseWebProperty> activeSites =  WebProperties.InitWebProperties.init();
             dict = new Dictionary<string,baseWebProperty>();
@@ -148,6 +149,25 @@ namespace WebTwoOh
             {
                 thread.Abort();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            WebProperties.AccountEmail em = new AccountEmail();
+
+            em.emailLogin = "codingsolo";
+            em.emailPassword = "colonel4";
+            em.mailhost = "pop.gmail.com";
+
+            List<Email> emails = Mail.Mail.getHeaders(ref em);
+
+            if (emails != null)
+                foreach (var email in emails)
+                {
+                    listView1.Items.Add(new ListViewItem(email.subject));
+                }
+
         }
     }
 }

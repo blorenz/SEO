@@ -32,12 +32,19 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainerMasterAccountCreation = new System.Windows.Forms.SplitContainer();
             this.splitContainerSitesVsBrowsers = new System.Windows.Forms.SplitContainer();
+            this.splitContainerSitesVsLog = new System.Windows.Forms.SplitContainer();
             this.listViewSites = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.splitContainerSitesVsLog = new System.Windows.Forms.SplitContainer();
+            this.splitContainerEmailVsEmail = new System.Windows.Forms.SplitContainer();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMasterAccountCreation)).BeginInit();
@@ -46,13 +53,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerSitesVsBrowsers)).BeginInit();
             this.splitContainerSitesVsBrowsers.Panel1.SuspendLayout();
             this.splitContainerSitesVsBrowsers.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
-            this.splitContainer3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerSitesVsLog)).BeginInit();
             this.splitContainerSitesVsLog.Panel1.SuspendLayout();
             this.splitContainerSitesVsLog.Panel2.SuspendLayout();
             this.splitContainerSitesVsLog.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerEmailVsEmail)).BeginInit();
+            this.splitContainerEmailVsEmail.Panel1.SuspendLayout();
+            this.splitContainerEmailVsEmail.Panel2.SuspendLayout();
+            this.splitContainerEmailVsEmail.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -105,6 +114,24 @@
             this.splitContainerSitesVsBrowsers.SplitterDistance = 198;
             this.splitContainerSitesVsBrowsers.TabIndex = 2;
             // 
+            // splitContainerSitesVsLog
+            // 
+            this.splitContainerSitesVsLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerSitesVsLog.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerSitesVsLog.Name = "splitContainerSitesVsLog";
+            this.splitContainerSitesVsLog.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainerSitesVsLog.Panel1
+            // 
+            this.splitContainerSitesVsLog.Panel1.Controls.Add(this.listViewSites);
+            // 
+            // splitContainerSitesVsLog.Panel2
+            // 
+            this.splitContainerSitesVsLog.Panel2.Controls.Add(this.richTextBox1);
+            this.splitContainerSitesVsLog.Size = new System.Drawing.Size(198, 533);
+            this.splitContainerSitesVsLog.SplitterDistance = 375;
+            this.splitContainerSitesVsLog.TabIndex = 1;
+            // 
             // listViewSites
             // 
             this.listViewSites.CheckBoxes = true;
@@ -135,7 +162,7 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.splitContainer3);
+            this.tabPage2.Controls.Add(this.splitContainerEmailVsEmail);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -144,32 +171,81 @@
             this.tabPage2.Text = "Email Verification";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // splitContainer3
+            // splitContainerEmailVsEmail
             // 
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.Location = new System.Drawing.Point(3, 3);
-            this.splitContainer3.Name = "splitContainer3";
-            this.splitContainer3.Size = new System.Drawing.Size(878, 533);
-            this.splitContainer3.SplitterDistance = 292;
-            this.splitContainer3.TabIndex = 0;
+            this.splitContainerEmailVsEmail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerEmailVsEmail.Location = new System.Drawing.Point(3, 3);
+            this.splitContainerEmailVsEmail.Name = "splitContainerEmailVsEmail";
             // 
-            // splitContainerSitesVsLog
+            // splitContainerEmailVsEmail.Panel1
             // 
-            this.splitContainerSitesVsLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerSitesVsLog.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerSitesVsLog.Name = "splitContainerSitesVsLog";
-            this.splitContainerSitesVsLog.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.splitContainerEmailVsEmail.Panel1.Controls.Add(this.button1);
+            this.splitContainerEmailVsEmail.Panel1.Controls.Add(this.textBox4);
+            this.splitContainerEmailVsEmail.Panel1.Controls.Add(this.textBox3);
+            this.splitContainerEmailVsEmail.Panel1.Controls.Add(this.textBox2);
+            this.splitContainerEmailVsEmail.Panel1.Controls.Add(this.textBox1);
             // 
-            // splitContainerSitesVsLog.Panel1
+            // splitContainerEmailVsEmail.Panel2
             // 
-            this.splitContainerSitesVsLog.Panel1.Controls.Add(this.listViewSites);
+            this.splitContainerEmailVsEmail.Panel2.Controls.Add(this.listView1);
+            this.splitContainerEmailVsEmail.Size = new System.Drawing.Size(878, 533);
+            this.splitContainerEmailVsEmail.SplitterDistance = 292;
+            this.splitContainerEmailVsEmail.TabIndex = 0;
             // 
-            // splitContainerSitesVsLog.Panel2
+            // button1
             // 
-            this.splitContainerSitesVsLog.Panel2.Controls.Add(this.richTextBox1);
-            this.splitContainerSitesVsLog.Size = new System.Drawing.Size(198, 533);
-            this.splitContainerSitesVsLog.SplitterDistance = 375;
-            this.splitContainerSitesVsLog.TabIndex = 1;
+            this.button1.Location = new System.Drawing.Point(165, 191);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(75, 155);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(85, 20);
+            this.textBox4.TabIndex = 0;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(75, 119);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(165, 20);
+            this.textBox3.TabIndex = 0;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(75, 77);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(165, 20);
+            this.textBox2.TabIndex = 0;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(75, 38);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(165, 20);
+            this.textBox1.TabIndex = 0;
+            // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader2});
+            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView1.Location = new System.Drawing.Point(0, 0);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(582, 533);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Email";
+            this.columnHeader2.Width = 1000;
             // 
             // Form1
             // 
@@ -189,13 +265,16 @@
             this.splitContainerSitesVsBrowsers.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerSitesVsBrowsers)).EndInit();
             this.splitContainerSitesVsBrowsers.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
-            this.splitContainer3.ResumeLayout(false);
             this.splitContainerSitesVsLog.Panel1.ResumeLayout(false);
             this.splitContainerSitesVsLog.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerSitesVsLog)).EndInit();
             this.splitContainerSitesVsLog.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.splitContainerEmailVsEmail.Panel1.ResumeLayout(false);
+            this.splitContainerEmailVsEmail.Panel1.PerformLayout();
+            this.splitContainerEmailVsEmail.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerEmailVsEmail)).EndInit();
+            this.splitContainerEmailVsEmail.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -210,8 +289,15 @@
         private System.Windows.Forms.SplitContainer splitContainerSitesVsBrowsers;
         private System.Windows.Forms.SplitContainer splitContainerMasterAccountCreation;
         private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.SplitContainer splitContainer3;
+        private System.Windows.Forms.SplitContainer splitContainerEmailVsEmail;
         private System.Windows.Forms.SplitContainer splitContainerSitesVsLog;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
     }
 }
 

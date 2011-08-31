@@ -95,6 +95,10 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Mail\Mail.csproj">
+      <Project>{C3A7211E-F102-4149-9BE2-3AF8054D6272}</Project>
+      <Name>Mail</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebProperties.cs\WebProperties.csproj">
       <Project>{5084E6F6-F163-4A75-9DFE-D17A5458BE8C}</Project>
       <Name>WebProperties</Name>
