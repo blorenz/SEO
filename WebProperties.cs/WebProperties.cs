@@ -189,7 +189,7 @@ namespace WebProperties
 
         public virtual String getPasswordChars()
         {
-            return CharacterSets.lowercase + CharacterSets.uppercase + CharacterSets.numbers + CharacterSets.symbols;
+            return CharacterSets.lowercase + CharacterSets.uppercase + CharacterSets.numbers;
         }
 
         public virtual void createProfile(WatiN.Core.IE window, ProfileAccount account)
@@ -229,6 +229,7 @@ namespace WebProperties
                 logMessage(0, "LOG_CONNECT_TO", getLabel());
                 // Windows
                 window.ClearCookies("http://" + getSiteDomain());
+                window.ClearCookies("http://lycos.com");
                 window.GoTo("http://" +getSiteDomain());
              
 

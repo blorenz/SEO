@@ -39,7 +39,7 @@ namespace WebTwoOh
             wb.ScriptErrorsSuppressed = true;
             wb.Navigate("www.google.com");
             wb.Dock = DockStyle.Fill;
-            splitContainer1.Panel2.Controls.Add(wb);
+            splitContainerSitesVsBrowsers.Panel2.Controls.Add(wb);
             return wb;
         }
 
@@ -110,7 +110,7 @@ namespace WebTwoOh
             // Single-threaded while testing with one browser window
                     while (webBrowsers.Count > 0)
                     {
-                        splitContainer1.Panel2.Controls.RemoveAt(0);
+                        splitContainerSitesVsBrowsers.Panel2.Controls.RemoveAt(0);
                         webBrowsers.RemoveAt(0);
                     }
                     webBrowsers.Add(newWebBrowser());
