@@ -169,5 +169,11 @@ namespace WebTwoOh
                 }
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            richTextBox3.Text = SEOcommon.Spinner.Spin(richTextBox2.Text);
+        }
     }
 }
