@@ -32,9 +32,11 @@
             this.splitContainerSitesVsLog = new System.Windows.Forms.SplitContainer();
             this.tabControlSites = new DevExpress.XtraTab.XtraTabControl();
             this.tabPageSites = new DevExpress.XtraTab.XtraTabPage();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.listViewSites = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
@@ -58,6 +60,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.tabControlSites)).BeginInit();
             this.tabControlSites.SuspendLayout();
             this.tabPageSites.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -103,6 +107,7 @@
             // tabControlSites
             // 
             this.tabControlSites.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlSites.HeaderLocation = DevExpress.XtraTab.TabHeaderLocation.Left;
             this.tabControlSites.Location = new System.Drawing.Point(0, 0);
             this.tabControlSites.LookAndFeel.SkinName = "Caramel";
             this.tabControlSites.LookAndFeel.UseDefaultLookAndFeel = false;
@@ -112,24 +117,35 @@
             this.tabControlSites.TabIndex = 1;
             this.tabControlSites.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.tabPageSites,
-            this.xtraTabPage2});
+            this.xtraTabPage2,
+            this.xtraTabPage5});
             // 
             // tabPageSites
             // 
-            this.tabPageSites.Controls.Add(this.listViewSites);
+            this.tabPageSites.Controls.Add(this.panelControl1);
             this.tabPageSites.Name = "tabPageSites";
-            this.tabPageSites.Size = new System.Drawing.Size(192, 349);
+            this.tabPageSites.Size = new System.Drawing.Size(171, 370);
             this.tabPageSites.Text = "Sites";
+            // 
+            // panelControl1
+            // 
+            this.panelControl1.Controls.Add(this.listViewSites);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl1.Location = new System.Drawing.Point(0, 0);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(171, 370);
+            this.panelControl1.TabIndex = 0;
             // 
             // listViewSites
             // 
+            this.listViewSites.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listViewSites.CheckBoxes = true;
             this.listViewSites.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
             this.listViewSites.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listViewSites.Location = new System.Drawing.Point(0, 0);
+            this.listViewSites.Location = new System.Drawing.Point(2, 2);
             this.listViewSites.Name = "listViewSites";
-            this.listViewSites.Size = new System.Drawing.Size(192, 349);
+            this.listViewSites.Size = new System.Drawing.Size(167, 366);
             this.listViewSites.TabIndex = 0;
             this.listViewSites.UseCompatibleStateImageBehavior = false;
             this.listViewSites.View = System.Windows.Forms.View.Details;
@@ -143,8 +159,14 @@
             // xtraTabPage2
             // 
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(192, 349);
-            this.xtraTabPage2.Text = "xtraTabPage2";
+            this.xtraTabPage2.Size = new System.Drawing.Size(171, 370);
+            this.xtraTabPage2.Text = "Accounts";
+            // 
+            // xtraTabPage5
+            // 
+            this.xtraTabPage5.Name = "xtraTabPage5";
+            this.xtraTabPage5.Size = new System.Drawing.Size(171, 370);
+            this.xtraTabPage5.Text = "xtraTabPage5";
             // 
             // richTextBox1
             // 
@@ -230,7 +252,7 @@
             this.xtraTabPage1.Controls.Add(this.splitContainerSitesVsBrowsers);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(884, 537);
-            this.xtraTabPage1.Text = "xtraTabPage1";
+            this.xtraTabPage1.Text = "Account Creation";
             // 
             // xtraTabPage3
             // 
@@ -297,6 +319,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.tabControlSites)).EndInit();
             this.tabControlSites.ResumeLayout(false);
             this.tabPageSites.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
@@ -332,6 +356,8 @@
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage4;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl2;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage5;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
     }
 }
 
