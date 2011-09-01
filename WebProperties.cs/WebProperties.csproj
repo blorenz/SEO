@@ -31,12 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DeathByCaptcha">
-      <HintPath>..\..\..\..\..\..\..\deathbycaptcha\lib\DeathByCaptcha.dll</HintPath>
+    <Reference Include="ChilkatDotNet4">
+      <HintPath>..\libs\ChilkatDotNet4.dll</HintPath>
     </Reference>
-    <Reference Include="DecaptcherLib, Version=1.0.4255.38160, Culture=neutral, processorArchitecture=x86">
+    <Reference Include="DeathByCaptcha, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\api_dll_NET_2010_32_bit\Release\DecaptcherLib.dll</HintPath>
+      <HintPath>..\libs\DeathByCaptcha.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,8 +46,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="WatiN.Core">
-      <HintPath>..\WebTwoOh\bin\Debug\WatiN.Core.dll</HintPath>
+    <Reference Include="WatiN.Core, Version=2.1.0.1196, Culture=neutral, PublicKeyToken=db7cfd3acb5ad44e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libs\WatiN.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -15,7 +15,7 @@ using WebProperties;
 
 namespace WebTwoOh
 {
-    public partial class Form1 : System.Windows.Forms.Form
+    public partial class Form1 : DevExpress.XtraEditors.XtraForm//System.Windows.Forms.Form
     {
   
         private WatiN.Core.DialogHandlers.WebBrowserIE[] ie = new WatiN.Core.DialogHandlers.WebBrowserIE[2];

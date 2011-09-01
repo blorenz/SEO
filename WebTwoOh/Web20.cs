@@ -17,15 +17,8 @@ namespace WebTwoOh
 
         public Web20()
         {
-            trdr = new StreamReader("./sites.txt");
-            String input = trdr.ReadToEnd();
-
-            trdr.Close();
-
-            sites = input.Trim().Split('\n');
-
             trdr = new StreamReader("./proxies.txt");
-            input = trdr.ReadToEnd();
+            String input = trdr.ReadToEnd();
 
             trdr.Close();
 
