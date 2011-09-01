@@ -105,7 +105,7 @@ namespace WebTwoOh
                 return;
             String siteToGoTo =  listViewSites.SelectedItems[0].Name;
 
-           // Web20.PROXYSET(wb20.getProxies()[rand.Next(24)]);
+            Web20.PROXYSET(wb20.getProxies()[rand.Next(24)]);
             String sc = listViewSites.SelectedItems[0].Name;
 
             // Single-threaded while testing with one browser window

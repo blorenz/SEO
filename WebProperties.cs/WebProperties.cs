@@ -47,7 +47,7 @@ namespace WebProperties
 
     public class Month
     {
-        Int32 month = 1;
+        public Int32 month = 1;
 
         public String getString()
         {
@@ -81,6 +81,7 @@ namespace WebProperties
         public String city = "";
         public String stateOrProvince = "";
         public String postalCode = "";
+        public String country = "United States";
 
         public Month birthMonth = new Month();
         public Int32 birthDay = 1;
@@ -127,6 +128,9 @@ namespace WebProperties
             dict.Add(new com.Beep());
             dict.Add(new com.BlinkWeb());
             dict.Add(new com.Blog());
+            dict.Add(new ca.blog());
+            dict.Add(new couk.blog());
+            dict.Add(new com.Blogger());
 
             return dict;
         }
@@ -219,6 +223,50 @@ namespace WebProperties
 
       
 
+    }
+
+    public class changeme : baseWebProperty
+    {
+        public override String getSiteDomain()
+        {
+            return "CHANGME";
+        }
+
+        public override string getPasswordChars()
+        {
+            return CharacterSets.lowercase + CharacterSets.numbers;
+        }
+        public override String getLabel()
+        {
+            return "CHANGEME";
+        }
+
+        public override void createProfile(IE window, ProfileAccount account)
+        {
+            window.ClearCookies("http://" + getSiteDomain());
+            window.GoTo("http://" + getSiteDomain());
+            // Frames
+
+
+            while (true)
+            {
+                Div div = window.Div("recaptcha_image");
+                Image img = div.Image(Find.First());
+
+                String captchaText = CaptchaSolving.solveDeathByCaptcha(img.Src);
+
+                if (captchaText != null)
+                {
+                //    txt_recaptcha_response_field.Click();
+                   // txt_recaptcha_response_field.TypeText(captchaText);
+                 //   button.Checked = true;
+                  //  btn_submit_btn.Click();
+                }
+                if (!window.Elements.Exists("recaptcha_image"))
+                    break;
+
+            }
+        }
     }
 
     namespace com
@@ -457,6 +505,265 @@ namespace WebProperties
                 }
               
              
+            }
+        }
+
+
+          public class Blogger : baseWebProperty
+          {
+              public override String getSiteDomain()
+              {
+                  return "blogger.com";
+              }
+
+              public override string getPasswordChars()
+              {
+                  return CharacterSets.lowercase + CharacterSets.numbers;
+              }
+              public override String getLabel()
+              {
+                  return "blogger.com";
+              }
+
+              public override void createProfile(IE window, ProfileAccount account)
+              {
+                  window.ClearCookies("http://" + getSiteDomain());
+                  window.GoTo("http://" + getSiteDomain());
+                  // Frames
+
+                  // Frames
+
+                  // Model
+                  Link getStarted = window.Link(Find.BySelector("html body.login div#body div#main div#m2 div#m3 table tbody tr td.ga-elements table#new-account-link.form-noindent tbody tr td a"));
+                  TextField txt_Email = window.TextField(Find.ByName("Email"));
+                  TextField txt_Email2 = window.TextField(Find.ByName("Email2"));
+                  TextField txt_Passwd = window.TextField(Find.ByName("Passwd"));
+                  TextField txt_PasswdAgain = window.TextField(Find.ByName("PasswdAgain"));
+                  TextField txt_displayname = window.TextField(Find.ByName("displayname"));
+                  SelectList sel_Gender = window.SelectList(Find.ByName("Gender"));
+                  TextField txt_Birthday = window.TextField(Find.ByName("Birthday"));
+                  TextField txt_newaccountcaptcha = window.TextField(Find.ByName("newaccountcaptcha"));
+                  CheckBox chk_termsofservice_1 = window.CheckBox(Find.ByName("termsofservice") && Find.ByValue("1"));
+                 // Div submitDiv = window.Div("submitbutton");
+
+                  Link submitLink = window.Link(Find.BySelector("html body div#body.body div#main div#m2 div#m3 form#createaccount div.ubtn-large div.ubtn-orange-on-white div#submitbutton.ubtn div.i a"));
+
+
+                  // Code
+                  getStarted.Click();
+                  txt_Email.TypeText(account.email.emailAddress);
+                  txt_Email2.TypeText(account.email.emailAddress);
+
+                  txt_Passwd.TypeText(account.password);
+                  txt_PasswdAgain.TypeText(account.password);
+                  txt_displayname.TypeText(account.username);
+                  sel_Gender.SelectByValue(account.genderMale ? "MALE" : "FEMALE");
+                  txt_Birthday.TypeText(String.Format("{0}/{1}/{2}",account.birthMonth.month,account.birthDay,account.birthYear));
+
+                  while (true)
+                  {
+                      Div div = window.Div(Find.ByClass("captchaImage"));
+                      Image img = div.Image(Find.First());
+
+                      String captchaText = CaptchaSolving.solveDeathByCaptcha(img.Src);
+
+                      if (captchaText != null)
+                      {
+                          //    txt_recaptcha_response_field.Click();chk_termsofservice_1.Checked = true;
+                          txt_newaccountcaptcha.TypeText(captchaText);
+                          chk_termsofservice_1.Checked = true;
+                          // txt_recaptcha_response_field.TypeText(captchaText);
+                          //   button.Checked = true;
+                          //  btn_submit_btn.Click();
+                      }
+                      if (!window.Elements.Exists("captchaImage"))
+                          break;
+
+                  }
+
+                  //txt_newaccountcaptcha.Click();
+
+                  submitLink.Click();
+
+
+                
+              }
+          }
+
+    }
+
+    namespace ca
+    {
+        public class blog : baseWebProperty
+        {
+            public override String getSiteDomain()
+            {
+                return "blog.ca";
+            }
+
+            public override string getPasswordChars()
+            {
+                return CharacterSets.lowercase + CharacterSets.numbers;
+            }
+            public override String getLabel()
+            {
+                return "blog.ca";
+            }
+
+            public override void createProfile(IE window, ProfileAccount account)
+            {
+                window.ClearCookies("http://" + getSiteDomain());
+                window.GoTo("http://" + getSiteDomain());
+                // Frames       
+
+                // Model
+                Link lnk_wwwblogcaregisterregisterphp______ = window.Link(Find.ByUrl("http://www.blog.ca/register/register.php"));
+                TextField txt_username = window.TextField(Find.ByName("username"));
+                Span spn______ = window.Span(Find.ByText(""));
+                TextField txt_password_registerForm_password_____ = window.TextField(Find.ByName("password") && Find.ById("registerForm_password"));
+                TextField txt_password2 = window.TextField(Find.ByName("password2"));
+                TextField txt_email = window.TextField(Find.ByName("email"));
+                TextField txt_email2 = window.TextField(Find.ByName("email2"));
+                TextField txt_recaptcha_response_field = window.TextField(Find.ByName("recaptcha_response_field"));
+                CheckBox chk_tos_registerForm_accept = window.CheckBox(Find.ByName("tos") && Find.ById("registerForm_accept"));
+                Button btn_registerForm_submit = window.Button(Find.ByName("registerForm_submit"));
+                TextField txt_firstname = window.TextField(Find.ByName("firstname"));
+                TextField txt_lastname = window.TextField(Find.ByName("lastname"));
+                TextField txt_city = window.TextField(Find.ByName("city"));
+                SelectList sl_day = window.SelectList(Find.ById("registerForm_day"));
+                SelectList sl_month = window.SelectList(Find.ById("registerForm_month"));
+                SelectList sl_year = window.SelectList(Find.ById("registerForm_year"));
+                SelectList sl_gender = window.SelectList(Find.ById("registerForm_gender"));
+                SelectList sl_country = window.SelectList(Find.ById("registerForm_country"));
+
+                // Code
+                lnk_wwwblogcaregisterregisterphp______.Click();
+                txt_username.TypeText(account.username);
+                txt_password_registerForm_password_____.TypeText(account.password);
+                txt_password2.TypeText(account.password);
+                txt_email.TypeText(account.email.emailAddress);
+                txt_email2.TypeText(account.email.emailAddress);
+
+                while (true)
+                {
+                    Div div = window.Div("recaptcha_image");
+                    Image img = div.Image(Find.First());
+
+                    String captchaText = CaptchaSolving.solveDeathByCaptcha(img.Src);
+
+                    if (captchaText != null)
+                    {
+                        txt_recaptcha_response_field.Click();
+                        txt_recaptcha_response_field.TypeText(captchaText);
+                        chk_tos_registerForm_accept.Checked = true;
+                        btn_registerForm_submit.Click();
+                    }
+                    if (!window.Elements.Exists("recaptcha_image"))
+                        break;
+
+                }
+
+                txt_firstname.TypeText(account.nameFirst);
+                txt_lastname.TypeText(account.nameLast);
+                sl_day.Option(account.birthDay.ToString("D2")).Select();
+                sl_month.Option(account.birthMonth.getString()).Select();
+                sl_year.Option(account.birthYear.ToString()).Select();
+                sl_gender.Option(account.genderMale ? "male" : "female").Select();
+                sl_country.Option(account.country).Select();
+                txt_city.TypeText(account.city);
+                btn_registerForm_submit.Click();
+
+
+               
+            }
+        }
+    }
+
+    namespace couk
+    {
+        public class blog : baseWebProperty
+        {
+            public override String getSiteDomain()
+            {
+                return "blog.co.uk";
+            }
+
+            public override string getPasswordChars()
+            {
+                return CharacterSets.lowercase + CharacterSets.numbers;
+            }
+            public override String getLabel()
+            {
+                return "blog.co.uk";
+            }
+
+            public override void createProfile(IE window, ProfileAccount account)
+            {
+                window.ClearCookies("http://" + getSiteDomain());
+                window.GoTo("http://" + getSiteDomain());
+                // Frames       
+
+                // Model
+                Link lnk_wwwblogcaregisterregisterphp______ = window.Link(Find.ByUrl("http://www.blog.co.uk/register/register.php"));
+                TextField txt_username = window.TextField(Find.ByName("username"));
+                Span spn______ = window.Span(Find.ByText(""));
+                TextField txt_password_registerForm_password_____ = window.TextField(Find.ByName("password") && Find.ById("registerForm_password"));
+                TextField txt_password2 = window.TextField(Find.ByName("password2"));
+                TextField txt_email = window.TextField(Find.ByName("email"));
+                TextField txt_email2 = window.TextField(Find.ByName("email2"));
+                TextField txt_recaptcha_response_field = window.TextField(Find.ByName("recaptcha_response_field"));
+                CheckBox chk_tos_registerForm_accept = window.CheckBox(Find.ByName("tos") && Find.ById("registerForm_accept"));
+                Button btn_registerForm_submit = window.Button(Find.ByName("registerForm_submit"));
+                TextField txt_firstname = window.TextField(Find.ByName("firstname"));
+                TextField txt_lastname = window.TextField(Find.ByName("lastname"));
+                TextField txt_city = window.TextField(Find.ByName("city"));
+                SelectList sl_day = window.SelectList(Find.ById("registerForm_day"));
+                SelectList sl_month = window.SelectList(Find.ById("registerForm_month"));
+                SelectList sl_year = window.SelectList(Find.ById("registerForm_year"));
+                SelectList sl_gender = window.SelectList(Find.ById("registerForm_gender"));
+                SelectList sl_country = window.SelectList(Find.ById("registerForm_country"));
+
+                
+
+                // Code
+                lnk_wwwblogcaregisterregisterphp______.Click();
+                txt_username.TypeText(account.username);
+                txt_password_registerForm_password_____.TypeText(account.password);
+                txt_password2.TypeText(account.password);
+                txt_email.TypeText(account.email.emailAddress);
+                txt_email2.TypeText(account.email.emailAddress);
+
+                while (true)
+                {
+                    Div div = window.Div("recaptcha_image");
+                    Image img = div.Image(Find.First());
+
+                    String captchaText = CaptchaSolving.solveDeathByCaptcha(img.Src);
+
+                    if (captchaText != null)
+                    {
+                        txt_recaptcha_response_field.Click();
+                        txt_recaptcha_response_field.TypeText(captchaText);
+                        chk_tos_registerForm_accept.Checked = true;
+                        btn_registerForm_submit.Click();
+                    }
+                    if (!window.Elements.Exists("recaptcha_image"))
+                        break;
+
+                }
+
+                txt_firstname.TypeText(account.nameFirst);
+                txt_lastname.TypeText(account.nameLast);
+                sl_day.Option(account.birthDay.ToString("D2")).Select();
+                sl_month.Option(account.birthMonth.getString()).Select();
+                sl_year.Option(account.birthYear.ToString()).Select();
+                sl_gender.Option(account.genderMale ? "male" : "female").Select();
+                sl_country.Option(account.country).Select();
+                txt_city.TypeText(account.city);
+                btn_registerForm_submit.Click();
+
+
+
             }
         }
     }
