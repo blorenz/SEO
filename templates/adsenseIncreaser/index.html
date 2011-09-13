@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head> 
+    <title>
+      Adsense Increaser.cs.{% if domain %}results.{{domain}}{% else %}home{% endif %}
+    </title>
+    <link rel="stylesheet" href="{{MEDIA_URL}}site.css" type="text/css" media="screen">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js">
+</script>
+  </head>
+  <body>
+    <div id="main-wrap">
+      <div id="keywordForm-wrap">
+        <img src="{{STATIC_URL}}/asi/images/increase-adsense.jpg" alt="Adsense Increaser" class="centeredImage">
+
+        <form method="get">
+		{% if taskNumber %}
+		<input type="hidden" value="{{taskNumber}}" name="tn">
+		{% endif %}
+          {% csrf_token %} <input class="domain" type="text" name="domain"> <input type="submit" value="Domain!" class="adsenseIncreaserSubmit">
+        </form>
+		
+      </div>
+	  <div id="results-wrap">
+	  {% if domainResults %}
+	  
+		
+		{% for i in domainResults %}
+		<div class="adResult">
+			<span class="adTitle">{{ i.2 }}</span><br/>
+			<span class="adUrl">{{ i.0 }}</span><br/>
+			<span class="adLine2">{{ i.3 }}</span><br/>
+			<span class="adLine3">{{ i.4 }}</span><br/>
+			<span class="cpc">{{ i.5 }}</span> 
+		</div>
+		{% endfor %}
+	 
+	  {%endif%}
+	   </div>
+    </div>
+  </body>
+  <script>
+  $(function(){
+	$('.adResult').css('color','red');
+  });
+  </script>
+</html>

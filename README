@@ -1,7 +1,15 @@
-# SEO 
+SEO
+----
 SEO is an abstractly-named repository that hosts various projects utilizing various languages.  It is a collection point for tools that are SEO-centric. 
 
 To use any of the projects that are part of the repository, you have to checkout their branch.  All SEO projects are maintained on different branches from the master so that they may be controlled from one repo.
 
-## webtwooh
+
+webtwooh
+---------
 WebTwoOh is an Web 2.0 web property creator and maintainer.  It has the ability to create accounts on, as of last count, 4 Web 2.0 sites.  Web20 will activate accounts that require email activation.
+
+
+adsense increaser
+-----------------
+Adsense Increaser determines ads that will show up for a certain URL and gets associated CPC for the ad.  User can blacklist ads via Adsense advertiser blocker as to only permit high paying ads.
