@@ -1,0 +1,68 @@
+body {
+    color: black
+    }
+.keywordSearch {
+    min-width: 500px;
+    height: 24pt;
+    font-size: 17pt;
+    font-family: georgia;
+    color: green
+    }
+.keywordSearchSubmit {
+    min-width: 100px;
+    font-size: 12pt;
+    height: 26pt
+    }
+.centeredImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+    }
+#main-wrap {
+    width: 100%
+    }
+#keywordForm-wrap {
+    margin-left: auto;
+    margin-right: auto;
+    width: 605px
+    }
+#loginForm-wrap {
+    margin: 0 auto;
+    width: 230px
+    }
+.mustAuthenticate {
+    font-size: 24pt;
+    color: orange;
+    width: 300px
+    }
+#loginForm-wrap .username, #loginForm-wrap .password {
+    font-size: 16pt
+    }
+#loginForm-wrap input {
+    height: 25pt;
+    width: 200px;
+    font-size: 14pt
+    }
+.domain {
+    min-width: 500px;
+    height: 20pt;
+    font-size: 15pt;
+    color: darkBlue
+    }
+.adResult {
+    font-size: small;
+    margin: 20px;
+    float: left
+    }
+.adTitle {
+    color: rgb(34, 0, 193);
+    font-family: arial;
+    font-size: medium
+    }
+.adUrl {
+    color: rgb(14, 119, 74);
+    font-family: arial
+    }
+.cpc {
+    font-size: 16pt
+    }
