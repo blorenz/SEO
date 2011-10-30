@@ -175,5 +175,10 @@ namespace WebTwoOh
 
             richTextBox3.Text = SEOcommon.Spinner.Spin(richTextBox2.Text);
         }
+
+        private void memoExEdit1_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
