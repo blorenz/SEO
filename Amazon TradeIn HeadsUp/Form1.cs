@@ -18,10 +18,12 @@ namespace Amazon_TradeIn_HeadsUp
         WatiN.Core.IE realIE = null;
         WatiN.Core.IE realIESecondary = null;
 
+        List<Books> bookList = new List<Books>();
+
+
         public Form1()
         {
             InitializeComponent();
-            webBrowser1.ScriptErrorsSuppressed = true;
             
         }
 
@@ -30,20 +32,14 @@ namespace Amazon_TradeIn_HeadsUp
            
         }
 
-        public WebBrowser newWebBrowser()
-        {
-            WebBrowser wb = new WebBrowser();
-            splitContainer1.Panel2.Controls.Add(wb);
-            wb.ScriptErrorsSuppressed = true;
-            wb.Navigate("www.amazon.com");
-            wb.Dock = DockStyle.Fill;
-            
-            return wb;
-        }
 
-        public void checkForSignIn()
+        public void checkForSignIn(IE iebrowser)
         {
-            if (realIE.Elements.Exists("ap_email"))
+            HtmlAgilityPack.HtmlDocument s = new HtmlAgilityPack.HtmlDocument();
+
+            s.LoadHtml(iebrowser.Html);
+
+            if (s.DocumentNode.SelectSingleNode("//*[@id='ap_email']") != null)
             {
 
                 Element te = realIE.Element("ap_email");//realIE.TextField("ap_email");
@@ -58,97 +54,189 @@ namespace Amazon_TradeIn_HeadsUp
             //ap_password
             //signInSubmit
         }
-        public void loadTitles() {
+        public bool loadTitles() {
+            checkForSignIn(realIE);
             HtmlAgilityPack.HtmlDocument s = new HtmlAgilityPack.HtmlDocument();
           
             s.LoadHtml(realIE.Html);
 
            // HtmlNode l = s.DocumentNode.SelectSingleNode(".//*[@class='tradein-whiteBoxInner']");
-            
-            foreach (HtmlNode row in s.DocumentNode.SelectNodes(".//*[@class='ti-order']"))
+
+            HtmlNodeCollection rows = s.DocumentNode.SelectNodes(".//*[contains(@id, 'order_info_OPEN')]");
+
+            if (rows == null)
+                return false;
+
+            foreach (HtmlNode row in rows )
             {
                 HtmlNode l2 = row.SelectSingleNode(".//*[@class='title-box']");
 
                 if (l2 == null)
                     continue;
 
+                Books book = new Books();
+
                 HtmlNodeCollection vals = row.SelectNodes("./td");
 
               //  HtmlNode n = vals[1].SelectSingleNode(".//a");
-                ListViewItem lvi = new ListViewItem(row.SelectSingleNode(".//*[@class='title-box']").InnerText);
-
-                lvi.SubItems.Add(row.SelectSingleNode(".//*[contains(@id, 'totalExpected')]").InnerText);
-
-
+                book.title = row.SelectSingleNode(".//*[@class='title-box']").InnerText;
+                String val = row.SelectSingleNode(".//*[contains(@id, 'totalExpected')]").InnerText;
+                val = val.Substring(1);
+                book.tradeInValue_Accepted = Convert.ToDecimal(val);
 
                 HtmlNode href1 = row.SelectSingleNode(".//*[contains(@id, 'trackBtn_')]");
                 HtmlAttribute att = href1.Attributes["href"];
                 String href = att.Value;
-
-
                 href = "https://www.amazon.com" + href;
                 href = System.Text.RegularExpressions.Regex.Replace(href, "&amp;", "&");
-                try
-                {
-                    realIESecondary.GoTo(href);
-                }
-                catch
-                {
-                    
-                }
-                while (realIESecondary.Html == null)
-                    System.Threading.Thread.Sleep(1000);
-                System.Threading.Thread.Sleep(1000);
-                Boolean didShip = checkIfIShipped(realIESecondary);
+                book.urlToTrack = href;
 
-                lvi.SubItems.Add(didShip ? "Yes" : "No");
+                href1 = row.SelectSingleNode(".//*[contains(@id, 'asinLink_OPEN')]");
+                att = href1.Attributes["href"];
+                href = att.Value;
+              //  href = "https://www.amazon.com" + href;
+                href = System.Text.RegularExpressions.Regex.Replace(href, "&amp;", "&");
+                book.urlToBook = href;
 
-                listView1.Items.Add(lvi);
+                href1 = row.SelectSingleNode(".//*[contains(@id, 'printLabel_OPEN')]");
+                if (href1 != null)
+                {
+                    att = href1.Attributes["href"];
+                    href = att.Value;
+                    href = "https://www.amazon.com" + href;
+                    href = System.Text.RegularExpressions.Regex.Replace(href, "&amp;", "&");
+                    book.urlToPrint = href;
+                }
+                else
+                    book.urlToPrint = null;
+                
+                bookList.Add(book);
+                Int32 index = bookList.Count - 1;
+
+                
+
+                listView1.Invoke(
+                  new System.Threading.ThreadStart(delegate
+                  {
+                      ListViewItem lvi = new ListViewItem(book.title);
+                      lvi.Name = index.ToString();
+                      lvi.SubItems.Add(book.tradeInValue_Accepted.ToString());
+                      lvi.SubItems.Add("-");
+                      lvi.SubItems.Add("Processing...");
+                      listView1.Items.Add(lvi);
+                  }));
             }
 
+            return true;
         }
 
-        public Boolean checkIfIShipped(WatiN.Core.IE nextbrowser)
-        {
-            HtmlAgilityPack.HtmlDocument s = new HtmlAgilityPack.HtmlDocument();
-            s.LoadHtml(nextbrowser.Html);
+       
 
-            HtmlNode l = s.DocumentNode.SelectSingleNode(".//*[@class='tradein-cBoxInner']/table//table");
-
-            HtmlNodeCollection els = l.SelectNodes(".//tr");
-
-            if (els.Count > 2)
-                return true;
-
-            return false;
-        }
+        
 
         private void doTitlesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
         }
 
-        private void Form1_Shown(object sender, EventArgs e)
+        public void doTradeInCheck()
         {
-
-          // ie = new WatiN.Core.DialogHandlers.WebBrowserIE(webBrowser1);
+            Settings.Instance.MakeNewIeInstanceVisible = false;
+            Settings.MakeNewIeInstanceVisible = false;
+            // ie = new WatiN.Core.DialogHandlers.WebBrowserIE(webBrowser1);
             realIE = new IE("www.amazon.com/gp/tradein/multicondition-your-account");
-            realIESecondary = new IE("www.google.com");
+            //realIESecondary = new IE("www.google.com");
 
             while (realIE.Html == null)
                 System.Threading.Thread.Sleep(1000);
 
-            checkForSignIn();
+            checkForSignIn(realIE);
 
-            while (true)
+            Boolean keepgoing = true;
+            while (keepgoing)
             {
                 while (realIE.Html == null)
                     System.Threading.Thread.Sleep(1000);
 
-                loadTitles();
-
+                keepgoing = loadTitles();
                 Element nextPage = realIE.Element("page_next_bottom");
                 nextPage.Click();
+            }
+
+            realIE.Close();
+            var thread = new System.Threading.Thread(new System.Threading.ThreadStart(getShipping));
+            thread.SetApartmentState(System.Threading.ApartmentState.STA);
+            thread.Start();
+        }
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            var thread = new System.Threading.Thread(new System.Threading.ThreadStart(doTradeInCheck));
+            thread.SetApartmentState(System.Threading.ApartmentState.STA);
+            thread.Start();
+                
+        }
+
+        
+
+        public void getShipping()
+        {
+            Int32 numberBooks = 10;// bookList.Count;
+
+            System.Threading.Thread[] threadPool = new System.Threading.Thread[numberBooks];
+
+            for (int j = 0; j < (bookList.Count) / numberBooks; j++)
+            {
+                for (int i = 0; i < numberBooks; i++)
+                {
+                    Books book = bookList[j * numberBooks + i];
+
+                    var thread = new System.Threading.Thread(new System.Threading.ThreadStart(book.checkAllShipped));
+
+                    thread.SetApartmentState(System.Threading.ApartmentState.STA);
+                    thread.Start();
+                    threadPool[i] = thread;
+                }
+
+                for (int i = 0; i < numberBooks; i++)
+                {
+                    threadPool[i].Join();
+                    listView1.Invoke(
+                   new System.Threading.ThreadStart(delegate
+                   {
+                       listView1.Items[Convert.ToString(j * numberBooks + i)].SubItems[2].Text = bookList[j * numberBooks + i].tradeInValue_Current.ToString();
+                 
+                       listView1.Items[Convert.ToString(j * numberBooks + i)].SubItems[3].Text = bookList[j * numberBooks + i].Shipped ? "Yes" : "No";
+                   }));
+                }
+            }
+        }
+
+        private void listView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count > 0)
+            {
+                Settings.MakeNewIeInstanceVisible = true;
+                WatiN.Core.IE newIE = new IE(bookList[Convert.ToInt32(listView1.SelectedItems[0].Name)].urlToBook);
+                Settings.MakeNewIeInstanceVisible = false;
+            }
+        }
+
+        private void listView1_KeyUp(object sender, KeyEventArgs e)
+        {
+
+            if (e.KeyValue == 'F')
+            {
+                if (listView1.SelectedItems.Count > 0)
+                {
+                    Settings.MakeNewIeInstanceVisible = true;
+                    WatiN.Core.IE newIE = new IE(bookList[Convert.ToInt32(listView1.SelectedItems[0].Name)].urlToPrint);
+                    while (newIE.Html == null)
+                        System.Threading.Thread.Sleep(1000);
+                   // Element el = newIE.Element(Find.BySelector("#labels-list>div>table>tbody>tr>td>a"));
+                    Settings.MakeNewIeInstanceVisible = false;
+                   // el.Click();
+                }
             }
         }
 
