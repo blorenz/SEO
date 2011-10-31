@@ -17,6 +17,7 @@ namespace Amazon_TradeIn_HeadsUp
        public Decimal tradeInValue_Accepted;
        public Decimal tradeInValue_Current;
        public Boolean Shipped;
+       public Int32 pageNumber;
 
        public IE IESecondary = null;
 

@@ -67,6 +67,8 @@ namespace Amazon_TradeIn_HeadsUp
             if (rows == null)
                 return false;
 
+
+            Int32 pageNumber = Convert.ToInt32(System.Text.RegularExpressions.Regex.Match(s.DocumentNode.SelectSingleNode(".//*[@id='page_count']").InnerText, "Page (\\d{1,2})").Groups[1].Value);
             foreach (HtmlNode row in rows )
             {
                 HtmlNode l2 = row.SelectSingleNode(".//*[@class='title-box']");
@@ -84,6 +86,13 @@ namespace Amazon_TradeIn_HeadsUp
                 val = val.Substring(1);
                 book.tradeInValue_Accepted = Convert.ToDecimal(val);
 
+
+                HtmlNode goodBook = row.SelectSingleNode(".//*[contains(@id, 'status_OPEN')]");
+
+                if ((System.Text.RegularExpressions.Regex.IsMatch(goodBook.InnerText, "Gift card deposited")) ||
+                    (System.Text.RegularExpressions.Regex.IsMatch(goodBook.InnerText, "Returned")))
+                    continue;
+                
                 HtmlNode href1 = row.SelectSingleNode(".//*[contains(@id, 'trackBtn_')]");
                 HtmlAttribute att = href1.Attributes["href"];
                 String href = att.Value;
@@ -109,7 +118,8 @@ namespace Amazon_TradeIn_HeadsUp
                 }
                 else
                     book.urlToPrint = null;
-                
+
+                book.pageNumber = pageNumber;
                 bookList.Add(book);
                 Int32 index = bookList.Count - 1;
 
@@ -136,7 +146,9 @@ namespace Amazon_TradeIn_HeadsUp
 
         private void doTitlesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            var thread = new System.Threading.Thread(new System.Threading.ThreadStart(getShipping));
+            thread.SetApartmentState(System.Threading.ApartmentState.STA);
+            thread.Start();
         }
 
         public void doTradeInCheck()
@@ -159,14 +171,21 @@ namespace Amazon_TradeIn_HeadsUp
                     System.Threading.Thread.Sleep(1000);
 
                 keepgoing = loadTitles();
+                statusStrip1.Items[0].Text = "Total Books: " + bookList.Count.ToString();
+
+                Double value = 0;
+                foreach (Books book in bookList)
+                    value += Convert.ToDouble(book.tradeInValue_Accepted);
+
+                statusStrip1.Items[1].Text = "Value: $" + value.ToString();
+
                 Element nextPage = realIE.Element("page_next_bottom");
                 nextPage.Click();
             }
 
+            
             realIE.Close();
-            var thread = new System.Threading.Thread(new System.Threading.ThreadStart(getShipping));
-            thread.SetApartmentState(System.Threading.ApartmentState.STA);
-            thread.Start();
+            
         }
 
         private void Form1_Shown(object sender, EventArgs e)
@@ -236,6 +255,19 @@ namespace Amazon_TradeIn_HeadsUp
                    // Element el = newIE.Element(Find.BySelector("#labels-list>div>table>tbody>tr>td>a"));
                     Settings.MakeNewIeInstanceVisible = false;
                    // el.Click();
+                }
+            }
+            else if (e.KeyValue == 'D')
+            {
+                if (listView1.SelectedItems.Count > 0)
+                {
+                    Settings.MakeNewIeInstanceVisible = true;
+                    WatiN.Core.IE newIE = new IE("https://www.amazon.com/gp/tradein/multicondition-your-account/ref=trdrt_ya_page_" + bookList[Convert.ToInt32(listView1.SelectedItems[0].Name)].pageNumber.ToString() + "?ie=UTF8&orderFilter=all&page=" + bookList[Convert.ToInt32(listView1.SelectedItems[0].Name)].pageNumber.ToString());
+                    while (newIE.Html == null)
+                        System.Threading.Thread.Sleep(1000);
+                    // Element el = newIE.Element(Find.BySelector("#labels-list>div>table>tbody>tr>td>a"));
+                    Settings.MakeNewIeInstanceVisible = false;
+                    // el.Click();
                 }
             }
         }
