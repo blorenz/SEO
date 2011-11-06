@@ -14,8 +14,8 @@ namespace Amazon_TradeIn_HeadsUp
     public partial class Form1 : System.Windows.Forms.Form
     {
 
-        WatiN.Core.DialogHandlers.WebBrowserIE ie = null;
         WatiN.Core.IE realIE = null;
+         
         WatiN.Core.IE realIESecondary = null;
 
         List<Books> bookList = new List<Books>();
@@ -24,7 +24,7 @@ namespace Amazon_TradeIn_HeadsUp
         public Form1()
         {
             InitializeComponent();
-            
+            WatiN.Core.Settings.AutoCloseDialogs = false;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -229,6 +229,32 @@ namespace Amazon_TradeIn_HeadsUp
                    }));
                 }
             }
+
+            int k = 0;
+            for (int i = bookList.Count - (bookList.Count % numberBooks) - 1; i < (bookList.Count); i++)
+            {
+             
+                    Books book = bookList[i];
+
+                    var thread = new System.Threading.Thread(new System.Threading.ThreadStart(book.checkAllShipped));
+
+                    thread.SetApartmentState(System.Threading.ApartmentState.STA);
+                    thread.Start();
+                    threadPool[k++] = thread;
+            }
+
+            k = 0;
+            for (int i = bookList.Count - (bookList.Count % numberBooks) - 1; i < (bookList.Count); i++)
+            {
+                threadPool[k++].Join();
+                listView1.Invoke(
+               new System.Threading.ThreadStart(delegate
+               {
+                   listView1.Items[Convert.ToString(i)].SubItems[2].Text = bookList[i].tradeInValue_Current.ToString();
+
+                   listView1.Items[Convert.ToString(i)].SubItems[3].Text = bookList[i].Shipped ? "Yes" : "No";
+               }));
+            }
         }
 
         private void listView1_DoubleClick(object sender, EventArgs e)
@@ -244,15 +270,39 @@ namespace Amazon_TradeIn_HeadsUp
         private void listView1_KeyUp(object sender, KeyEventArgs e)
         {
 
-            if (e.KeyValue == 'F')
+            if (e.KeyValue == ' ')
             {
                 if (listView1.SelectedItems.Count > 0)
                 {
                     Settings.MakeNewIeInstanceVisible = true;
                     WatiN.Core.IE newIE = new IE(bookList[Convert.ToInt32(listView1.SelectedItems[0].Name)].urlToPrint);
+                    newIE.AutoClose = false;
                     while (newIE.Html == null)
                         System.Threading.Thread.Sleep(1000);
                    // Element el = newIE.Element(Find.BySelector("#labels-list>div>table>tbody>tr>td>a"));
+                    Div theDiv = newIE.Div("labels-list");
+                    Link theLink = theDiv.Link(Find.Any);
+                    theLink.Click();
+
+                    //https://www.amazon.com/gp/tradein/print.html/ref=trdrt_prnt_popup
+                    System.Text.RegularExpressions.Regex re = new System.Text.RegularExpressions.Regex("https://www.amazon.com/gp/tradein/print.html/ref=trdrt_prnt_popup");
+                    WatiN.Core.IE printIE = IE.AttachTo<IE>(Find.ByUrl(re));
+
+                    WatiN.Core.DialogHandlers.PrintDialogHandler pdhPopup = new WatiN.Core.DialogHandlers.PrintDialogHandler(WatiN.Core.DialogHandlers.PrintDialogHandler.ButtonsEnum.Print);
+                    WatiN.Core.DialogHandlers.FileDownloadHandler fh = new WatiN.Core.DialogHandlers.FileDownloadHandler("C://sdf.xps");
+                    
+                    printIE.AddDialogHandler(pdhPopup);
+        
+                    printIE.AddDialogHandler(fh);
+
+                    Clipboard.SetText(listView1.SelectedItems[0].Text);
+
+                    Element el = printIE.Element(Find.BySelector("td>a:first-child"));
+                    el.Click();
+
+
+                    printIE.Close();
+                    newIE.Close();
                     Settings.MakeNewIeInstanceVisible = false;
                    // el.Click();
                 }
