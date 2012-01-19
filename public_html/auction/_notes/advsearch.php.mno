@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_Recordset1" value="name:id;datatype:int,name:dealer_id;datatype:int,name:user_id;datatype:int,name:category_id;datatype:int,name:subcategory_id1;datatype:int,name:subcategory_id2;datatype:int,name:vehicle_id;datatype:int,name:title;datatype:string,name:description;datatype:blob,name:add_description;datatype:blob,name:desc_mod;datatype:timestamp,name:minimum_bid;datatype:real,name:reserve_price;datatype:real,name:reserve_lowered;datatype:string,name:buy_now_price;datatype:real,name:current_bid;datatype:real,name:bid_increment;datatype:real,name:auction_type;datatype:int,name:modified;datatype:timestamp,name:created;datatype:timestamp,name:starts;datatype:timestamp,name:duration;datatype:int,name:ends;datatype:timestamp,name:status;datatype:string,name:winning_bid;datatype:int,name:chaching;datatype:int,name:pays_transport;datatype:string,name:views;datatype:int" />
+</info>

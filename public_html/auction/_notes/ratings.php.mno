@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_Recordset1" value="name:id;datatype:int,name:auction_id;datatype:int,name:user_id;datatype:int,name:buyer_id;datatype:int,name:seller_id;datatype:int,name:answered;datatype:int,name:total;datatype:int,name:timeliness;datatype:int,name:accuracy;datatype:int,name:availability;datatype:int,name:prompt_payment;datatype:int,name:prompt_transport;datatype:int,name:condition;datatype:int,name:professionalism;datatype:int,name:comments;datatype:blob" />
+</info>

@@ -1,0 +1,107 @@
+<?php
+#
+# Copyright (c) 2002 Steve Price
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+#
+# 1. Redistributions of source code must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright
+#    notice, this list of conditions and the following disclaimer in the
+#    documentation and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+# OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+# HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+# LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+# OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+# SUCH DAMAGE.
+#
+# $srp: godealertodealer.com/htdocs/admin/dealers/index.php,v 1.9 2002/10/14 23:53:46 steve Exp $
+#
+
+if (empty($s))
+	$status = 'active';
+else
+	$status = $s;
+
+$page_title = ucfirst($status) . ' Dealers';
+
+include('../../../include/db.php');
+db_connect();
+
+$sql = "SELECT COUNT(*) FROM dealers WHERE status='$status'";
+
+include('../../../include/list.php');
+
+$result = db_do("SELECT id, poc_name, poc_email, name, sdid, phone, fax, " .
+    "rating FROM dealers WHERE status='$status' ORDER BY name LIMIT $_start, " .
+    "$limit");
+?>
+
+<html>
+ <head>
+  <title>Administration: <?= $page_title ?></title>
+  <link rel="stylesheet" type="text/css" href="../../site.css" title="site" />
+ </head>
+ <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<?php include('../header.php'); ?>
+  <br />
+  <p align="center" class="big"><b><?php echo $page_title; ?></b></p>
+<?php include('_links.php'); ?>
+  <p align="center" class="big"><b>Dealers/Financial Companies</b></p>
+  <table align="center" border="0" cellspacing="0" cellpadding="5" width="95%">
+<?php
+if (db_num_rows($result) <= 0) {
+?>
+   <tr>
+    <td align="center" class="big">No dealers found.</td>
+   </tr>
+<?php
+} else {
+?>
+   <tr><td colspan="6"><?php echo $nav_links; ?></td></tr>
+   <tr> 
+    <td>&nbsp;</td>
+    <td class="header"><b>Dealership Name</b></td>
+    <td class="header"><b>POC Name</b></td>
+    <td class="header"><b>POC Email</b></td>
+    <td class="header"><b>Seller Rating</b></td>
+    <td class="header"><b>State Dealer ID</b></td>
+    <td class="header"><b>Phone</b></td>
+    <td class="header"><b>Fax</b></td>
+   </tr>
+<?php
+	$bgcolor = '#FFFFFF';
+	while (list($id, $poc_name, $poc_email, $name, $sdid, $phone, $fax,
+	   $rating) = db_row($result)) {
+		$bgcolor = ($bgcolor == '#FFFFFF') ? '#E6E6E6' : '#FFFFFF';
+?>
+   <tr bgcolor="<?php echo $bgcolor; ?>"> 
+    <td align="center" class="normal"><a href="../charges/dealer.php?id=<?php echo $id; ?>">charges</a> | <a href="users.php?did=<?php echo $id; ?>">users</a> | <a href="edit.php?id=<?php echo $id; ?>">edit</a></td>
+    <td class="normal"><?php tshow($name); ?></td>
+    <td class="normal"><?php tshow($poc_name); ?></td>
+    <td class="normal"><?php tshow($poc_email); ?></td>
+    <td class="normal"><?php tshow($rating); ?></td>
+    <td class="normal"><?php tshow($sdid); ?></td>
+    <td class="normal"><?php tshow($phone); ?></td>
+    <td class="normal"><?php tshow($fax); ?></td>
+   </tr>
+<?php
+	}
+}
+
+db_free($result);
+db_disconnect();
+?>
+  </table>
+ </body>
+</html>

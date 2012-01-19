@@ -1,0 +1,1 @@
+<p align="center" class="normal">[ <a href="index.php?type=buy">Unpaid Buy Charges</a> | <a href="index.php?type=pull">Unpaid Pull Charges</a> | <a href="index.php?type=sell">Unpaid Sell Charges</a> | <a href="late.php">Unpaid Late Charges</a> | <a href="paid.php?s=open">Unpaid by the Month</a> | <a href="paid.php">Paid by the Month</a> ]</p>

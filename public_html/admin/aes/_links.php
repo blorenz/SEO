@@ -1,0 +1,1 @@
+<p align="center" class="normal">[ <a href="add.php">Add an Account Executive</a> | <a href="index.php">Active Account Executives</a> | <a href="index.php?s=inactive">Inactive Account Executives</a> ]</p>

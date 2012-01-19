@@ -1,0 +1,5 @@
+AuthName	"godealertodealer.com admin"
+AuthType	Basic
+AuthUserFile	/sites/live/.htpasswd
+
+require user	drol2005 

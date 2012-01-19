@@ -1,0 +1,104 @@
+<MAIN>
+<Config>
+   <HasPIPVideo type="Boolean">0</HasPIPVideo>
+   <HasTOC type="Boolean">1</HasTOC>
+   <HasAudio type="Boolean">0</HasAudio>
+   <MainVidIsFLV type="Boolean">0</MainVidIsFLV>
+   <ControlsWidth type="Number">640</ControlsWidth>
+   <ControlsHeight type="Number">480</ControlsHeight>
+   <Video1>
+      <MovieWidth type="Number">640</MovieWidth>
+      <MovieHeight type="Number">480</MovieHeight>
+      <Duration type="Number">562</Duration>
+      <FrameRate type="Number">10</FrameRate>
+      <KeyframeRate type="Number">0</KeyframeRate>
+      <MovieURL>automotive_industry.swf</MovieURL>
+   </Video1>
+   <PIP>
+      <MovieWidth type="Number">0</MovieWidth>
+      <MovieHeight type="Number">0</MovieHeight>
+      <Duration type="Number">0</Duration>
+      <FrameRate type="Number">0</FrameRate>
+      <KeyframeRate type="Number">30</KeyframeRate>
+      <MovieURL>automotive_industry_PIP.flv</MovieURL>
+   </PIP>
+   <TOC>
+      <X type="Number">0</X>
+      <Y type="Number">0</Y>
+      <Width type="Number">160</Width>
+      <Height type="Number">480</Height>
+      <!-- AlternatingRowColors takes precedence over BackgroundColor and RowDepthColors takes precedence over both AlternatingRowColors and BackgroundColor -->
+      <BackgroundColor type="Number"></BackgroundColor><!-- accepts a hex value -->
+      <AlternatingRowColors><!-- row alternate color based on the array of color values (row 1 = the value of the first color, row 2 = the value of the second color, row 3 equals the value of the first color, etc. -->
+         <array><!-- accepts two or more hex colors ( add additional Colors tags if more are needed ) -->
+            <Colors type="Number"></Colors>
+            <Colors type="Number"></Colors>
+         </array>
+      </AlternatingRowColors>
+      <RowDepthColors><!-- color is based on the rows depth in the tree hierarchy -->
+         <array><!-- accepts two or more hex colors colors in the form of 0xFFFFFF ( add additional Colors tags if more are needed ) -->
+            <Colors type="Number"></Colors><!-- accepts a hex value -->
+            <Colors type="Number"></Colors><!-- accepts a hex value -->
+         </array>
+      </RowDepthColors>
+      <RowRollOverColor type="Number">0xA4A4A4</RowRollOverColor><!-- color of the row on mouse roll over - ignored if UseRollOver is false -->
+      <RowSelectedColor type="Number">0xC0C0C0</RowSelectedColor><!-- color of the row when it is the currently active row -->
+      <RowIndentation>10</RowIndentation><!-- number of pixels each row of a tree is indented -->
+      <BorderStyle>solid</BorderStyle><!-- none, inset, outset, solid -->
+      <TextColor type="Number">0x000000</TextColor><!-- the font color of tree items -->
+      <FontFamily>_sans</FontFamily><!-- the name of the font to be used, i.e. Arial, Times New Roman, HelveticaNeueLT Std  -->
+      <FontSize type="Number">12</FontSize>
+      <FontWeight>none</FontWeight><!-- none, bold -->
+      <TextAlign>left</TextAlign><!-- left, right, center -->
+      <TextDecoration>none</TextDecoration><!-- none, underline -->
+      <TextIndent type="Number">0</TextIndent>
+      <TextRollOverColor type="Number">0x000000</TextRollOverColor><!-- color of text on mouse roll over - ignored if UseRollOver is false -->
+      <TextSelectedColor type="Number">0x000000</TextSelectedColor><!-- color of text when row is selected -->
+      <UseRollOver type="Boolean">0</UseRollOver><!-- Use boolean numerical equivalents( 0 = false, 1 = true ) if set to false the rollover colors for the text and row are ignored -->
+      <Collapsible type="Boolean">0</Collapsible><!-- if false, the collapsible nature of the tree is disabled -->
+   </TOC>
+   <AutoStart type="Boolean">1</AutoStart>
+   <BackgroundColor>FFFFFF</BackgroundColor>
+   <ShowLoadingMov type="Boolean">1</ShowLoadingMov>
+   <ScaleLoadingMov type="Boolean">1</ScaleLoadingMov>
+   <LoadingMovPercentToLoad type="Number">5</LoadingMovPercentToLoad>
+   <LoadingMovMinDuration type="Number">3</LoadingMovMinDuration>
+   <ControllerColor type="Number">0xFF8000</ControllerColor>
+   <ShowAbout type="Boolean">0</ShowAbout>
+   <AboutBoxText></AboutBoxText>
+   <TimeDisplayFormat>MM:SS</TimeDisplayFormat>
+   <ShowDuration type="Boolean">1</ShowDuration>
+   <ShowElapsedTime type="Boolean">1</ShowElapsedTime>
+   <TimeDisplayFont>Arial</TimeDisplayFont>
+   <TimeDisplayFontColor type="Number">0x000000</TimeDisplayFontColor>
+   <LocalSecurityWarning>This action is not allowed by the default Flash Player security settings when the content is played from a hard drive or CD.  Once the content is moved to a web server, it should function as expected, and you should not see this message.
+
+For other distribution methods, or to understand how the Flash Player security settings affect this content, please see the &quot;Flash Player Security&quot; topic in the Camtasia Studio help file.
+
+
+
+  </LocalSecurityWarning><!-- delete this line to disable warning -->
+</Config>
+<QuizInfo>
+   <IncludeScoreInEmail type="Boolean">0</IncludeScoreInEmail>
+
+</QuizInfo>
+<HotspotInfo>
+
+</HotspotInfo>
+<TOCInfo>
+   <node label="Start" file="automotive_industry.swf" time="0.000000" />
+   <node label="Search Buy Sell" file="automotive_industry.swf" time="2.300000" />
+   <node label="Wholesale Challenges and Issues" file="automotive_industry.swf" time="11.600001" />
+   <node label="Wholesale Challenges and Issues" file="automotive_industry.swf" time="68.700003" />
+   <node label="Who We Are" file="automotive_industry.swf" time="124.800006" />
+   <node label="What We Offer" file="automotive_industry.swf" time="176.500008" />
+   <node label="Key Features" file="automotive_industry.swf" time="268.600013" />
+   <node label="More Key Features" file="automotive_industry.swf" time="340.900016" />
+   <node label="Who Can Participate" file="automotive_industry.swf" time="438.200021" />
+   <node label="Cost and Savings" file="automotive_industry.swf" time="466.700022" />
+   <node label="How To Contact Us" file="automotive_industry.swf" time="505.900024" />
+   <node label="THANK YOU" file="automotive_industry.swf" time="542.200026" />
+
+</TOCInfo>
+</MAIN>

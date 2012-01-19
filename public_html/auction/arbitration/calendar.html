@@ -1,0 +1,54 @@
+<html>
+<link rel="stylesheet" media="screen" href="dynCalendar.css" />
+<script language="javascript" type="text/javascript" src="browserSniffer.js"></script>
+<script language="javascript" type="text/javascript" src="dynCalendar.js"></script>
+
+<form name="calendar_test">
+    <input type="text" name="date_input1">
+    <script language="JavaScript" type="text/javascript">
+    <!--
+    /**
+    * Example callback function
+    */
+    function exampleCallback_ISO1(date, month, year)
+    {
+        if (String(month).length == 1) {
+            month = '0' + month;
+        }
+    
+        if (String(date).length == 1) {
+            date = '0' + date;
+        }    
+        document.forms['calendar_test'].date_input1.value = year + '-' + month + '-' + date;
+    }
+    calendar1 = new dynCalendar('calendar1', 'exampleCallback_ISO1');
+    calendar1.setMonthCombo(true);
+    calendar1.setYearCombo(true);
+    //-->
+    </script>
+    
+    <br />
+    <input type="text" name="date_input2">
+    <script language="JavaScript" type="text/javascript">
+    <!--
+    /**
+    * Example callback function
+    */
+    function exampleCallback_ISO2(date, month, year)
+    {
+        if (String(month).length == 1) {
+            month = '0' + month;
+        }
+    
+        if (String(date).length == 1) {
+            date = '0' + date;
+        }    
+        document.forms['calendar_test'].date_input2.value = year + '-' + month + '-' + date;
+    }
+    calendar2 = new dynCalendar('calendar2', 'exampleCallback_ISO2');
+    calendar2.setMonthCombo(true);
+    calendar2.setYearCombo(true);
+    //-->
+    </script>    
+</form>
+</html>

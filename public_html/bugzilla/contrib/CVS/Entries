@@ -1,0 +1,19 @@
+/README/1.12/Tue Oct 16 10:13:54 2007//TBUGZILLA-3_4_8
+/bugzilla-queue/1.1.2.2/Fri Sep  4 21:22:52 2009//TBUGZILLA-3_4_8
+/bugzilla_ldapsync.rb/1.2.18.1/Mon Mar  8 02:48:49 2010//TBUGZILLA-3_4_8
+/bz_webservice_demo.pl/1.14/Mon May 19 18:38:26 2008//TBUGZILLA-3_4_8
+/bzdbcopy.pl/1.8/Tue Dec 16 21:16:33 2008//TBUGZILLA-3_4_8
+/cvs-update.pl/1.1/Tue Nov 11 05:58:52 2003//TBUGZILLA-3_4_8
+/fixperms.pl/1.1.4.2/Tue Mar  9 07:01:06 2010//TBUGZILLA-3_4_8
+/gnats2bz.pl/1.8/Sun Sep  3 20:37:01 2006//TBUGZILLA-3_4_8
+/jb2bz.py/1.5/Fri Aug 26 23:11:32 2005//TBUGZILLA-3_4_8
+/merge-users.pl/1.8/Tue Mar 11 15:50:04 2008//TBUGZILLA-3_4_8
+/mysqld-watcher.pl/1.5/Thu Mar 27 00:06:53 2003//TBUGZILLA-3_4_8
+/recode.pl/1.6/Fri Feb 20 21:54:16 2009//TBUGZILLA-3_4_8
+/sendbugmail.pl/1.8.4.1/Mon Mar  8 02:48:49 2010//TBUGZILLA-3_4_8
+/sendunsentbugmail.pl/1.10/Fri Oct 19 06:46:17 2007//TBUGZILLA-3_4_8
+/syncLDAP.pl/1.14/Mon Jul  7 09:01:51 2008//TBUGZILLA-3_4_8
+/yp_nomail.sh/1.1.36.1/Mon Mar  8 02:48:50 2010//TBUGZILLA-3_4_8
+D/bugzilla-submit////
+D/cmdline////
+D/gnatsparse////
