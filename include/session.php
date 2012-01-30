@@ -9,7 +9,6 @@
 **/
 $DOCUMENT_ROOT = $_SERVER['DOCUMENT_ROOT']; //JJM Added 9/19/2009
 $PHP_SELF = $_SERVER['PHP_SELF']; //JJM Added 1/4/2010
-print $DOCUMENT_ROOT;
 include("$DOCUMENT_ROOT/../include/defs.php");
 include_once("$DOCUMENT_ROOT/../include/defineVars.php");    // RJM added for checking the variables. 12.29.09
 
