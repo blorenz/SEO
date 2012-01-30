@@ -1,0 +1,1 @@
+<p align="center" class="normal">[ <a href="add.php">Add a Dealer</a> | <a href="index.php?s=pending">Pending Dealers</a> | <a href="index.php">Active Dealers</a> | <a href="index.php?s=suspended">Suspended Dealers</a> | <a href="index.php?s=saved">Saved Dealers</a>]</p>

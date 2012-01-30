@@ -1,0 +1,1 @@
+<p align="center" class="normal"><a href="../users/add.php?did=<?php echo $did; ?>">Add a User for <?php echo "'$dealer_name'"; ?></a></p>

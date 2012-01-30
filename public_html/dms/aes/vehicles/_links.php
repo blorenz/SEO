@@ -29,7 +29,7 @@
 #
 ?>
 
-   <p align="center" class="normal">[ <a href="../dealers/index.php?id=<?=$id?>">Dealer Info</a> | 
-   	<a href="../dealers/dealer_stats.php?id=<?=$id?>">Dealer Stats</a> | 
-	<a href="../dealers/my_stats.php?id=<?=$id?>">Their Stats</a> | 
+   <p align="center" class="normal">[ <a href="../dealers/index.php?id=<?php $id?>">Dealer Info</a> | 
+   	<a href="../dealers/dealer_stats.php?id=<?php $id?>">Dealer Stats</a> | 
+	<a href="../dealers/my_stats.php?id=<?php $id?>">Their Stats</a> | 
 	<a href="../">Back to Your AE Info</a> ]</p>

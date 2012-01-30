@@ -29,7 +29,7 @@
 #
 ?>
 
-<form method="post" action="<?=$PHP_SELF?>">
+<form method="post" action="<?php $PHP_SELF?>">
  <input type="hidden" name="id" value="<?php echo $id; ?>" />
  <table border="0" cellpadding="1" cellspacing="0">
   <tr><td colspan="2">&nbsp;</td></tr>
@@ -38,7 +38,7 @@
    <td align="center" colspan="2">
     <table border="0" cellpadding="0" cellspacing="0">
      <tr>
-      <td class="error">The following fields were incorrect/incomplete:<br /><ul><?=$errors?></ul></td>
+      <td class="error">The following fields were incorrect/incomplete:<br /><ul><?php $errors?></ul></td>
      </tr>
     </table>
    </td>
@@ -47,7 +47,7 @@
 <?php } ?>
   <tr>
    <td align="right" class="header">Title:</td>
-   <td class="normal"><input type="text" name="title" size="50" value="<?=$title?>" /></td>
+   <td class="normal"><input type="text" name="title" size="50" value="<?php $title?>" /></td>
   </tr>
   <tr>
    <td align="right" class="header" valign="top">Content:</td>

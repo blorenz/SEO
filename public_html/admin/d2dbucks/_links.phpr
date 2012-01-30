@@ -1,0 +1,1 @@
+<p align="center" class="normal">[ <a href="index.php">View D2DBucks</a> | <a href="add.php">Add D2DBucks</a> ]</p>

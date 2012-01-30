@@ -2,7 +2,7 @@
 
 <html>
  <head>
-  <title><?=$title?></title>
+  <title><?php $title?></title>
   <link rel="stylesheet" type="text/css" href="../site.css" title="site" />
  </head>
  <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -13,7 +13,7 @@
     <td width="100%" align="center">
      <table width="610" border="0" cellpadding="5" cellspacing="0">
       <tr>
-       <td align="center" class="huge"><b><?=$title?></b></td>
+       <td align="center" class="huge"><b><?php $title?></b></td>
       </tr>
       <tr>
        <td>

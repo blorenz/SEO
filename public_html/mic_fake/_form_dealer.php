@@ -260,12 +260,12 @@ else
 
        <table align="center" border="0" cellpadding="0" cellspacing="0">
           <tr>
-           <td class="error">The following fields were incorrect/incomplete:<br /><ul><?=$errors?></ul></td>
+           <td class="error">The following fields were incorrect/incomplete:<br /><ul><?php $errors?></ul></td>
           </tr>
 		  <tr><td colspan="2">&nbsp;</td></tr>
 </table>
 <?php } ?>
-	<form method="post" action="<?=$PHP_SELF?>">
+	<form method="post" action="<?php $PHP_SELF?>">
 		<input type="hidden" name="id" value="<?php echo $id; ?>" />
 		<input type="hidden" name="ae_id" value="<?php echo $ae_id; ?>" />
 		<input type="hidden" name="status" value="<?php echo $status; ?>" />
@@ -281,11 +281,11 @@ else
 	</tr>
 	<tr>
 		<td width="175" align="right" class="header"><span class="style1">*</span> Company Name:&nbsp;</td>
-		<td class="normal"><input type="text" name="name" size="50" value="<?=$name?>" /></td>
+		<td class="normal"><input type="text" name="name" size="50" value="<?php $name?>" /></td>
 	</tr>
 	<tr>
 		<td width="175" align="right" class="header"><span class="style1">*</span> DBA:&nbsp;</td>
-		<td class="normal"><input type="text" name="dba" size="50" value="<?=$dba?>" /></td>
+		<td class="normal"><input type="text" name="dba" size="50" value="<?php $dba?>" /></td>
 	</tr>
 	<tr>
 		<td width="175" align="right" class="header"><span class="style1">*</span> Type of Business:&nbsp;</td>
@@ -300,15 +300,15 @@ else
 	</tr>
 	<tr>
 		<td width="175" align="right" class="header">Federal EIN#:&nbsp;</td>
-		<td class="normal"><input type="text" name="ein" size="50" value="<?=$ein?>" /></td>
+		<td class="normal"><input type="text" name="ein" size="50" value="<?php $ein?>" /></td>
 	</tr>
 	<tr>
 		<td width="175" align="right" class="header"><span class="style1">*</span> Number of Stores:&nbsp;</td>
-		<td class="normal"><input type="text" name="no_of_stores" size="50" value="<?=$no_of_stores?>" /></td>
+		<td class="normal"><input type="text" name="no_of_stores" size="50" value="<?php $no_of_stores?>" /></td>
 	</tr>
 	<tr>
 		<td width="175" align="right" class="header"><span class="style1">*</span> Years of Business:&nbsp;</td>
-		<td class="normal"><input type="text" name="years" size="50" value="<?=$years?>" /></td>
+		<td class="normal"><input type="text" name="years" size="50" value="<?php $years?>" /></td>
 	</tr>
 	<tr>
 		<td width="175" align="right" class="header"><span class="style1">*</span> Industry:&nbsp;</td>
@@ -340,15 +340,15 @@ else
 			<table align="center" cellpadding="1" cellspacing="1" class="normal">
 				<tr>
 					<td width="175" align="right" class="header"><span class="style1">*</span> Address:&nbsp;</td>
-					<td class="normal"><input type="text" name="address1" size="25" value="<?=$address1?>" /></td>
+					<td class="normal"><input type="text" name="address1" size="25" value="<?php $address1?>" /></td>
 				</tr>
 				<tr>
 					<td width="175">&nbsp;</td>
-					<td class="normal"><input type="text" name="address2" size="25" value="<?=$address2?>" /></td>
+					<td class="normal"><input type="text" name="address2" size="25" value="<?php $address2?>" /></td>
 				</tr>
 				<tr>
 					<td width="175" align="right" class="header"><span class="style1">*</span> City:&nbsp;</td>
-					<td class="normal"><input type="text" name="city" size="25" maxlength="25" value="<?=$city?>" /></td>
+					<td class="normal"><input type="text" name="city" size="25" maxlength="25" value="<?php $city?>" /></td>
 			  </tr>
 				<tr>
 					<td width="175" align="right" class="header"><span class="style1">*</span> State:&nbsp;</td>
@@ -369,7 +369,7 @@ else
 				</tr>
 				<tr>
 					<td width="175" align="right" class="header"><span class="style1">*</span> Zip Code:&nbsp;</td>
-					<td class="normal"><input type="text" name="zip" size="25" value="<?=$zip?>" /></td>
+					<td class="normal"><input type="text" name="zip" size="25" value="<?php $zip?>" /></td>
 				</tr>
 			</table>
 		</td>
@@ -377,15 +377,15 @@ else
 			<table align="center" cellpadding="1" cellspacing="1" class="normal">
 				<tr>
 					<td width="175" align="right" class="header">Billing Address:&nbsp;</td>
-					<td class="normal"><input type="text" name="billing_address1" size="25" value="<?=$billing_address1?>" /></td>
+					<td class="normal"><input type="text" name="billing_address1" size="25" value="<?php $billing_address1?>" /></td>
 				</tr>
 				<tr>
 					<td width="175">&nbsp;</td>
-					<td class="normal"><input type="text" name="billing_address2" size="25" value="<?=$billing_address2?>" /></td>
+					<td class="normal"><input type="text" name="billing_address2" size="25" value="<?php $billing_address2?>" /></td>
 				</tr>
 				<tr>
 					<td width="175" align="right" class="header">Billing City:&nbsp;</td>
-					<td class="normal"><input type="text" name="billing_city" size="25" maxlength="25" value="<?=$billing_city?>" /></td>
+					<td class="normal"><input type="text" name="billing_city" size="25" maxlength="25" value="<?php $billing_city?>" /></td>
 				</tr>
 				<tr>
 					<td width="175" align="right" class="header">Billing State:&nbsp;</td>
@@ -406,7 +406,7 @@ else
 				</tr>
 				<tr>
 					<td width="175" align="right" class="header">Billing Zip:&nbsp;</td>
-					<td class="normal"><input type="text" name="billing_zip" size="25" value="<?=$billing_zip?>" /></td>
+					<td class="normal"><input type="text" name="billing_zip" size="25" value="<?php $billing_zip?>" /></td>
 				</tr>
 			</table>
 		</td>
@@ -415,12 +415,12 @@ else
 <table width="600" align="center" cellpadding="1" cellspacing="1" class="normal">
 	<tr>
 		<td width="115" align="right" class="header"><span class="style1">*</span> Phone Number:&nbsp;</td>
-		<td class="normal"><input type="text" name="phone" size="25" maxlength="25" value="<?=$phone?>" />
+		<td class="normal"><input type="text" name="phone" size="25" maxlength="25" value="<?php $phone?>" />
 		*Phone Format: 000-000-0000</td>
 	</tr>
 	<tr>
 		<td width="115" align="right" class="header">Fax:&nbsp;</td>
-		<td class="normal"><input type="text" name="fax" size="25"  maxlength="25" value="<?=$fax?>">
+		<td class="normal"><input type="text" name="fax" size="25"  maxlength="25" value="<?php $fax?>">
 		*Fax Format: 000-000-0000</td>
 	</tr>
 	<tr><td colspan="2"><hr></td></tr>
@@ -434,27 +434,27 @@ else
 	</tr>
 	<tr>
 		<td width="175" align="right" class="header"><span class="style1">*</span> Contact Name:&nbsp;</td>
-		<td class="normal"><input type="text" name="poc_f_name" size="15" value="<?=$poc_f_name?>" />
-		<input type="text" name="poc_m_name" size="2" value="<?=$poc_m_name?>" />
-		<input type="text" name="poc_l_name" size="15" value="<?=$poc_l_name?>" /></td>
+		<td class="normal"><input type="text" name="poc_f_name" size="15" value="<?php $poc_f_name?>" />
+		<input type="text" name="poc_m_name" size="2" value="<?php $poc_m_name?>" />
+		<input type="text" name="poc_l_name" size="15" value="<?php $poc_l_name?>" /></td>
 	</tr>
 	<tr>
 		<td width="175" align="right" class="header"><span class="style1">*</span> Contact Title:&nbsp;</td>
-		<td class="normal"><input type="text" name="poc_title" size="25" value="<?=$poc_title?>" /></td>
+		<td class="normal"><input type="text" name="poc_title" size="25" value="<?php $poc_title?>" /></td>
 	</tr>
 	<tr>
 		<td width="175" align="right" class="header"><span class="style1">*</span> Contact Email:&nbsp;</td>
-		<td class="normal"><input type="text" name="poc_email" size="25" value="<?=$poc_email?>" /></td>
+		<td class="normal"><input type="text" name="poc_email" size="25" value="<?php $poc_email?>" /></td>
 	</tr>
 	<tr>
 		<td width="175" align="right" class="header"><span class="style1">*</span> Contact Phone:&nbsp;</td>
-		<td class="normal"><input type="text" name="poc_phone" size="25" maxlength="12"  value="<?=$poc_phone?>" />
+		<td class="normal"><input type="text" name="poc_phone" size="25" maxlength="12"  value="<?php $poc_phone?>" />
 		*Phone Format: 000-000-0000</td>
 	</tr>
 
 	<tr>
 		<td width="175" align="right" class="header">Contact Fax:&nbsp;</td>
-		<td class="normal"><input type="text" name="poc_fax" size="25" maxlength="12" value="<?=$poc_fax?>" />
+		<td class="normal"><input type="text" name="poc_fax" size="25" maxlength="12" value="<?php $poc_fax?>" />
 		*Fax Format: 000-000-0000</td>
 	</tr>
 	<tr>
@@ -462,11 +462,11 @@ else
 	</tr>
 	<tr>
 		<td width="175" align="right" class="header"><span class="style1">*</span> Owner/Pres./CEO:&nbsp;</td>
-		<td class="normal"><input type="text" name="topdog_name" size="25" value="<?=$topdog_name?>" /></td>
+		<td class="normal"><input type="text" name="topdog_name" size="25" value="<?php $topdog_name?>" /></td>
 	</tr>
 	<tr>
 		<td width="175" align="right" class="header"><span class="style1">*</span> His/Her Title:&nbsp;</td>
-		<td class="normal"><input type="text" name="topdog_title" size="25" value="<?=$topdog_title?>" /></td>
+		<td class="normal"><input type="text" name="topdog_title" size="25" value="<?php $topdog_title?>" /></td>
 	</tr>
 </table>
 <table align="center" cellpadding="1" cellspacing="1" class="normal">
@@ -482,11 +482,11 @@ else
 			<table align="center" cellpadding="1" cellspacing="1" class="normal">
 				<tr>
 					<td width="175" align="right" class="header">Dealer License#:&nbsp;</td>
-					<td class="normal"><input type="text" name="dl_no" size="25" value="<?=$dl_no?>" /></td>
+					<td class="normal"><input type="text" name="dl_no" size="25" value="<?php $dl_no?>" /></td>
 				</tr>
 				<tr>
 					<td width="175" align="right" class="header">Dealer License Expiration:&nbsp;</td>
-					<td class="normal"><input type="text" name="dl_ex" size="5" maxlength="4" value="<?=$dl_ex?>" />
+					<td class="normal"><input type="text" name="dl_ex" size="5" maxlength="4" value="<?php $dl_ex?>" />
 					*Date Format: MMYY</td>
 				</tr>
 				<tr>
@@ -496,11 +496,11 @@ else
 			<table align="center" cellpadding="1" cellspacing="1" class="normal">
 				<tr>
 					<td width="175" align="right" class="header">Vendor/State Tax#:&nbsp;</td>
-					<td class="normal"><input type="text" name="vst_no" size="25" value="<?=$vst_no?>" /></td>
+					<td class="normal"><input type="text" name="vst_no" size="25" value="<?php $vst_no?>" /></td>
 				</tr>
 				<tr>
 					<td width="175" align="right" class="header">&nbsp;&nbsp;&nbsp;Vendor/State Tax Expiration:&nbsp;</td>
-					<td class="normal"><input type="text" name="vst_ex" size="5" maxlength="4" value="<?=$vst_ex?>" />
+					<td class="normal"><input type="text" name="vst_ex" size="5" maxlength="4" value="<?php $vst_ex?>" />
 					*Date Format: MMYY</td>
 				</tr>
 				<tr>
@@ -554,15 +554,15 @@ else
 				</tr>
 				<tr>
 					<td width="175" align="right" class="header"><span class="style1">*</span> Name on Credit Card:&nbsp;</td>
-					<td class="normal"><input type="text" name="cc_name" size="25" value="<?=$cc_name?>" /></td>
+					<td class="normal"><input type="text" name="cc_name" size="25" value="<?php $cc_name?>" /></td>
 				</tr>
 				<tr>
 					<td width="175" align="right" class="header"><span class="style1">*</span> Credit Card Number:&nbsp;</td>
-					<td class="normal"><input type="text" name="cc_no" size="25" maxlength="25" value="<?=$cc_no?>" /></td>
+					<td class="normal"><input type="text" name="cc_no" size="25" maxlength="25" value="<?php $cc_no?>" /></td>
 				</tr>
 				<tr>
 					<td width="175" align="right" class="header"><span class="style1">*</span> Credit Card Expiration:&nbsp;</td>
-					<td class="normal"><input type="text" name="cc_ex" size="5" maxlength="4" value="<?=$cc_ex?>" />
+					<td class="normal"><input type="text" name="cc_ex" size="5" maxlength="4" value="<?php $cc_ex?>" />
 					*Date Format: MMYY</td>
 				</tr>
 	  </table>	  </td>
@@ -575,15 +575,15 @@ else
 				</tr>
 				<tr>
 					<td width="175" align="right" class="header"><span class="style1">*</span> Bank Draft Name:&nbsp;</td>
-					<td class="normal"><input type="text" name="bd_name" size="25" value="<?=$bd_name?>" /></td>
+					<td class="normal"><input type="text" name="bd_name" size="25" value="<?php $bd_name?>" /></td>
 				</tr>
 				<tr>
 					<td width="175" align="right" class="header"><span class="style1">*</span> Bank Draft Routing:&nbsp;</td>
-					<td class="normal"><input type="text" name="bd_routing" size="25" value="<?=$bd_routing?>" /></td>
+					<td class="normal"><input type="text" name="bd_routing" size="25" value="<?php $bd_routing?>" /></td>
 				</tr>
 				<tr>
 					<td width="175" align="right" class="header"><span class="style1">*</span> Bank Draft Account:&nbsp;</td>
-					<td class="normal"><input type="text" name="bd_account" size="25" value="<?=$bd_account?>" /></td>
+					<td class="normal"><input type="text" name="bd_account" size="25" value="<?php $bd_account?>" /></td>
 				</tr>
 	  </table>	  </td>
 	</tr>
