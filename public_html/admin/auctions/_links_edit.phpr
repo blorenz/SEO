@@ -1,1 +1,0 @@
-  <p align="center" class="normal">[ <a href="../items/edit.php?id=<?php $vid?>&aid=<?php $aid?>">Edit Item</a> | <a href="../photos/index.php?vid=<?php $vid?>&aid=<?php $aid?>">Edit Photos</a> ]</p>

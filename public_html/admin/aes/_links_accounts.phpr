@@ -1,1 +1,0 @@
-<p align="center" class="normal">[ <a href="accounts.php?id=<?php $id?>&s=pending">Pending Dealers</a> | <a href="accounts.php?id=<?php $id?>">Active Dealers</a> | <a href="accounts.php?id=<?php $id?>&s=suspended">Suspended Dealers</a> | <a href="accounts.php?id=<?php $id?>&s=saved">Saved Dealers</a> ]</p>
