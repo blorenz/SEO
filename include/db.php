@@ -7,7 +7,8 @@ include_once("defineVars.php");
 
 // $Id: db.php 354 2006-07-11 20:59:45Z kaneda $
 
-define('DB_HOST',		'p50mysql335.secureserver.net');
+//define('DB_HOST',		'p50mysql335.secureserver.net');
+define('DB_HOST',		'localhost');
 //define('DB_NAME', 	'gdtdrestore');
 define('DB_NAME',		'godealertodealer');
 //define('DB_PASSWORD',		'gdtdlord610');

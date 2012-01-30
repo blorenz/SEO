@@ -3,10 +3,10 @@
 // $Id: db.php 354 2006-07-11 20:59:45Z kaneda $
 
 define('DB_HOST',		'localhost');
-define('DB_NAME', 	'gdtdrestore');
-//define('DB_NAME',		'godealertodealer');
-define('DB_PASSWORD',		'gdtdlord610');
-define('DB_USER',		'gdtd');
+//define('DB_NAME', 	'gdtdrestore');
+define('DB_NAME',		'godealertodealer');
+define('DB_PASSWORD',		'Gdtd6330');
+define('DB_USER',		'godealertodealer');
 
 
 

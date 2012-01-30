@@ -9,6 +9,7 @@
 */
 
 $PHP_SELF = $_SERVER['PHP_SELF'];
+include_once("../include/defineVars.php");
 
 include('../include/db.php');
 db_connect();
@@ -132,9 +133,9 @@ a.signup_img:hover {
  <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
  <table border="0" cellpadding="0" cellspacing="0" width="100%" align="center">
   <tr>
-    <td align="right" valign="top"><font size="-1"><b><?=$num_users?></b>
-	   	<font size="-2">DEALERS</font> | <b><?=$num_auctions?></b>
-		<font size="-2">COMPLETED AUCTIONS</font> | <b><?=$num_vehicles?></b>
+    <td align="right" valign="top"><font size="-1"><b><?php $num_users?></b>
+	   	<font size="-2">DEALERS</font> | <b><?php $num_auctions?></b>
+		<font size="-2">COMPLETED AUCTIONS</font> | <b><?php $num_vehicles?></b>
 		<font size="-2">ITEMS</font></font>&nbsp;&nbsp;
 	</td>
   </tr>
@@ -153,10 +154,10 @@ a.signup_img:hover {
      </td>
 		<td width="10"></td>
 		<td width="188">
-			<table border="0" cellpadding="0" cellspacing="0"><form action="<?=$PHP_SELF?>" method="post">
+			<table border="0" cellpadding="0" cellspacing="0"><form action="<?php $PHP_SELF?>" method="post">
 				<tr>
 					<td height="30" valign="bottom" class="big"><font color="#FF9900"><b>Username:&nbsp;</b></font></td>
-					<td height="30" valign="bottom" class="normal"><input type="text" name="username" size="16" value="<?=$username?>" /></td>
+					<td height="30" valign="bottom" class="normal"><input type="text" name="username" size="16" value="<?php $username?>" /></td>
 				</tr>
 				<tr>
 					<td height="30" valign="bottom" class="big"><font color="#FF9900"><b>Password:&nbsp;</b></font><br></td>

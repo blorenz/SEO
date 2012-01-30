@@ -1,4 +1,4 @@
-<?
+<?php
 
 //This function will be used in place of the previously used "Register Global" option that was set.
 //All variables that you want to use in your script should be passed into this function as a string (all variables are case sensitive).
