@@ -6,3 +6,80 @@
    css/less/bootstrap.less file.
 
    ========================================================================== */
+
+body {
+    background-color: #525252;
+}
+
+#container {
+    background:url(../img/background.jpg);
+
+    min-width: 940px;
+    height: 100%;
+    background-position: center top;
+    background-repeat: no-repeat no-repeat;
+}
+
+#center-lane {
+    position: relative;
+    width:940px;
+    margin: 0 auto;
+}
+
+#upload-form-container {
+    position: relative;
+    width:940px;
+    background-color: #a19f9f;
+    top: 150px;
+    margin: 0 auto 0;
+    padding: 25px 0;
+}
+
+#upload-form {
+    width: 880px;
+    position: relative;
+    margin: 0 auto;
+    background-color: #828282;
+}
+
+#upload-form form {
+    background: url(../img/form-bg.jpg);
+    background-repeat: no-repeat no-repeat;
+    padding-bottom: 25px;
+}
+
+#unsigned-artists {
+    position: absolute;
+    top: 130px;
+    z-index: 100;
+    left: -15px;
+}
+
+#copy {
+font-size: 24px;
+color: white;
+text-shadow: black 2px 2px 3px;
+width: 600px;
+display: block;
+line-height: 28px;
+padding-top: 50px;
+padding-left: 30px;
+}
+
+#form-fields {
+margin-left: 30px;
+background-color: #dbdbdb;
+width: 530px;
+margin-top:15px;
+padding:20px;
+}
+
+
+.song {
+ display: block; 
+}
+
+#upload-form form {
+    margin:0px;
+}
+

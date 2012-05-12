@@ -38,7 +38,7 @@ ROOT_URLCONF = 'uploadcolumbus.urls'
 
 INSTALLED_APPS = [
     # Template apps
-    'jingo_minify',
+    #'jingo_minify',
 
     # Django contrib apps
     'django.contrib.auth',
@@ -169,7 +169,7 @@ TEMPLATE_DIRS = (
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
-    'jingo.Loader',
+    #'jingo.Loader',
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
 )

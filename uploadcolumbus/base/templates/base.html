@@ -32,6 +32,7 @@
   <script src="{{ STATIC_URL }}js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
 </head>
 <body class="{% block body_class %}{% endblock %}">
+<div id="container">
 {% block body %}
   <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
        chromium.org/developers/how-tos/chrome-frame-getting-started -->
@@ -67,5 +68,6 @@
     s.parentNode.insertBefore(g,s)}(document,'script'));
   </script>
 {% endblock %}
+</div>
 </body>
 </html>

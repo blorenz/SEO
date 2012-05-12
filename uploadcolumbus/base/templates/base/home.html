@@ -2,5 +2,30 @@
 
 {% block page_class %}home-page{% endblock %}
 {% block content %}
-	<h1>Hello! It works!</h1>
+<div id="center-lane">
+    <div id="unsigned-artists">
+        <img src="{{ STATIC_URL }}img/unsigned-artists.png" alt="" />
+    </div>
+<div id="upload-form-container">
+<div id="upload-form">
+<form action="/" method="post">
+<span id="copy">
+Please upload your music.Please upload your music.Please upload your music.Please upload your music.Please upload your music.Please upload your music.Please upload your music.Please upload your music.
+</span>
+    {% csrf_token %}
+    <div id="form-fields">
+    {{ band_form.as_p }}
+    {{ song_form.as_p }}
+    {% for song_form in song_forms %}
+        <a class="song-reveal">Add another song? <span class="add-click">+<span></a>
+        <div class="song">
+        {{ song_form.as_p }}
+        </div>
+    {% endfor %}
+    <input type="submit" value="Submit" />
+</div>
+</form>
+</div>
+</div>
+</div>
 {% endblock %}
