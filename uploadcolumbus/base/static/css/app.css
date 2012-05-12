@@ -75,6 +75,17 @@ padding:20px;
 }
 
 
+#legal-text {
+margin: 30px 0;
+background-color: #dddddd;
+color: #666666;
+padding: 20px;
+}
+
+#legal-text p {
+margin: 0px;
+}
+
 .song {
  display: block; 
 }
