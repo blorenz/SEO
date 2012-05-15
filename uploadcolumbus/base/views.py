@@ -1,10 +1,11 @@
 """ Views for the base application """
 
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, HttpResponseRedirect
 from django.template import RequestContext
 from uploadcolumbus.base.models import *
 from django.forms.formsets import formset_factory
 from session_csrf import anonymous_csrf
+from uploadcolumbus.base.upload import *
 
 
 @anonymous_csrf
@@ -17,27 +18,27 @@ def home(request):
                 Add band information to a mailbox
     """
 
-    song_forms = formset_factory(SongForm, extra=4)
-    band_form = BandForm()
-    song_form = SongForm()
-
-    initialData = {'band_form': band_form,
-                'song_form': song_form,
-                'song_forms': song_forms, }
-
-    c = RequestContext(request, initialData)
+    initialData = {}
 
     if request.method == 'POST':
             band_form = BandForm(request.POST)
             song_form = SongForm(request.POST, request.FILES)
             song_forms = SongForm(request.POST, request.FILES)
+            initialData = {'bound': True, }
             if band_form.is_valid() and song_form.is_valid() and song_forms.is_valid():
-                #handle_uploaded_file(request.FILES['file'])
+                handle_uploaded_files(request.FILES)
                 return HttpResponseRedirect('/thanks-columbus/')
-            else:
-                band_form = BandForm()
-                song_form = SongForm()
-                song_forms = formset_factory(SongForm, extra=4)
+    else:
+        band_form = BandForm()
+        song_form = SongForm()
+        song_forms = formset_factory(SongForm, extra=4)
+
+    bandData = {'band_form': band_form,
+                'song_form': song_form,
+                'song_forms': song_forms, }
+
+    initialData = dict(initialData.items() + bandData.items())
+    c = RequestContext(request, initialData)
 
 #    return render_to_response('base/home.html', context_instance=RequestContext(request))
     return render_to_response('base/home.html', c)

@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load add_class %}
 
 {% block page_class %}home-page{% endblock %}
 {% block content %}
@@ -8,29 +9,55 @@
     </div>
 <div id="upload-form-container">
 <div id="upload-form">
-<form action="/" method="post">
+<form action="/" enctype='multipart/form-data' method="post">
 <span id="copy">
 Please upload your music.Please upload your music.Please upload your music.Please upload your music.Please upload your music.Please upload your music.Please upload your music.Please upload your music.
 </span>
     {% csrf_token %}
     <div id="form-fields">
-    {{ band_form.as_p }}
-    {{ song_form.as_p }}
+    {{ band_form.band_name|add_class:"wide"|add_placeholder:"Band/Artist name" }}
+    {{ band_form.band_name.errors }}
+    <p>Band email contact: {{ band_form.band_email }} </p>
+    {{ band_form.band_email.errors }}
+    <p>Typical genre: {{ band_form.band_genres}} </p>
+    <p>Band image: {{ band_form.band_image }}</p>
+    {{ band_form.band_bio|add_class:"wide"|add_placeholder:"Band/Artist bio" }}
+    {{ band_form.band_bio.errors }}
+    {{ band_form.band_gigs|add_class:"wide"|add_placeholder:"Band/Artist upcoming gigs" }}
+    {{ band_form.band_gigs.errors }}
+
+    {{ song_form.song_name|add_placeholder:"Song name"|add_class:"wide" }}
+    {{ song_form.song_name.errors }}
+    <p>Song file: {{ song_form.song_file }}</p>
+    {{ song_form.song_file.errors }}
+    <div>
+        <a class="lyrics-reveal">Got some lyrics? <span class="add-click">+<span></a>
+        {{ song_form.song_lyrics|add_placeholder:"Song lyrics"|add_class:"lyrics" }}
+        {{ song_form.song_lyrics.errors }}
+    </div>
     {% for song_form in song_forms %}
-        <a class="song-reveal">Add another song? <span class="add-click">+<span></a>
         <div class="song">
-        {{ song_form.as_p }}
+            {{ song_form.song_name|add_placeholder:"Song name"|add_class:"wide" }}
+            <p>Song file: {{ song_form.song_file }}</p>
+            <div>
+                <a class="lyrics-reveal">Got some lyrics? <span class="add-click">+<span></a>
+                {{ song_form.song_lyrics|add_placeholder:"Song lyrics"|add_class:"lyrics" }}
+                {{ song_form.song_lyrics.errors }}
+            </div>
         </div>
     {% endfor %}
+    {% if not bound %}
+    <a class="song-reveal">Add another song? <span class="add-click">+<span></a>
+    {% endif %}
     </div>
     <div id="legal-text">
 
 <p>Now the legal stuff.....
 <p>By clicking the upload button you agree to our full terms of service and understand that we will use your music to be broadcast through our mobile phone and web applications. Also, by clicking the upload button you are stating that you are authorized and have permission by your bandmembers to upload your music, album art and band information. Once you click the upload button, you agree that we are able to use your music and album art to promote the growth of our applications and, in turn, agree to nationwide publicity with the possibility of millions of new fans and touring contracts.  We will not sell or own the licensing of your music or album artwork, however, we are entitled to play your music and display your artwork in exchange for advertising and promotional purposes. 
 <p>FOR FULL TERMS OF SERVICE CLICK HERE.
-
     </div>
-    <input type="submit" value="Submit" />
+<p class="legal-check"><input type="checkbox" class="lc"> I agree to the full terms of service.</p>
+    <input class="submit disabled" type="submit" value="Upload" />
 
 </form>
 </div>

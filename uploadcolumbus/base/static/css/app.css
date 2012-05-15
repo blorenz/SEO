@@ -76,7 +76,7 @@ padding:20px;
 
 
 #legal-text {
-margin: 30px 0;
+margin: 30px 5px 15px;
 background-color: #dddddd;
 color: #666666;
 padding: 20px;
@@ -86,11 +86,77 @@ padding: 20px;
 margin: 0px;
 }
 
-.song {
- display: block; 
+.legal-check {
+width: 100%;
+color: #FFF;
+text-shadow: black 1px 1px 2px;
+text-align: center;
 }
 
+.song {
+ display: none; 
+}
+
+input.submit {
+margin: 0 auto;
+width: 200px;
+display: block;
+color: #000;
+background-color: hsl(201, 0%, 83%) !important;
+background-repeat: repeat-x;
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fcfcfc", endColorstr="#d3d3d3");
+background-image: -khtml-gradient(linear, left top, left bottom, from(#fcfcfc), to(#d3d3d3));
+background-image: -moz-linear-gradient(top, #fcfcfc, #d3d3d3);
+background-image: -ms-linear-gradient(top, #fcfcfc, #d3d3d3);
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fcfcfc), color-stop(100%, #d3d3d3));
+background-image: -webkit-linear-gradient(top, #fcfcfc, #d3d3d3);
+background-image: -o-linear-gradient(top, #fcfcfc, #d3d3d3);
+background-image: linear-gradient(#fcfcfc, #d3d3d3);
+border-color: #000; 
+text-shadow: 0 1px 1px rgba(255, 255, 255, 0.26);
+-webkit-font-smoothing: antialiased;
+}
+
+input.submit.disabled {
+  background-color: hsl(201, 0%, 89%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e2e2e2", endColorstr="#e2e2e2");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#e2e2e2), to(#e2e2e2));
+  background-image: -moz-linear-gradient(top, #e2e2e2, #e2e2e2);
+  background-image: -ms-linear-gradient(top, #e2e2e2, #e2e2e2);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e2e2e2), color-stop(100%, #e2e2e2));
+  background-image: -webkit-linear-gradient(top, #e2e2e2, #e2e2e2);
+  background-image: -o-linear-gradient(top, #e2e2e2, #e2e2e2);
+  background-image: linear-gradient(#e2e2e2, #e2e2e2);
+  border-color: #e2e2e2 #e2e2e2 hsl(201, 0%, 89%);
+  color: #888; 
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.00);
+  -webkit-font-smoothing: antialiased;
+}
 #upload-form form {
     margin:0px;
 }
 
+.wide {
+width: 100%;
+}
+
+.errorlist li {
+list-style: square;
+}
+
+.lyrics {
+display:none;
+width: 100%;
+}
+
+.lyrics-reveal {
+width:100%;
+text-align: right;
+display: block;
+}
+
+.errorlist {
+color: #bf1515;
+font-weight: 800;
+}
