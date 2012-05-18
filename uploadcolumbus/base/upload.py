@@ -19,7 +19,16 @@ def save_file(fv):
         #SimpleUploadedFile(filename, fv.read(), content_type)
 
 
-def handle_uploaded_files(dict_files):
+def write_forms(box, dict_forms):
+    boxi = os.path.join(settings.MEDIA_ROOT, box)
+    os.mkdir(boxi)
+    the_file = open(os.path.join(boxi, 'form.txt'), 'w')
+    for s in dict_forms.items():
+        the_file.write(s[0] + '\t' + s[1] + '\n')
+    the_file.close()
+
+
+def handle_uploaded_files(dict_files,dict_forms):
     ''' The intention of this function is to save all files that are in the dict_files.
         Each form submission will need a path that will have a md5 generated 'dropbox' for the files.
 
@@ -38,8 +47,10 @@ def handle_uploaded_files(dict_files):
     m.update(str(time.time()))
 
     # Start populating the dropbox
-    img_file = dict_files.get('band_image')
-    img_name = os.path.join(m.hexdigest(), img_file.name)
-    img_content = img_file.read()
-    content_file = ContentFile(img_content)
-    default_storage.save(img_name, content_file)
+    write_forms(m.hexdigest(), dict_forms)
+    for s in dict_files.keys():
+        img_file = dict_files.get(s)
+        img_name = os.path.join(m.hexdigest(), s + '_' + img_file.name)
+        img_content = img_file.read()
+        content_file = ContentFile(img_content)
+        default_storage.save(img_name, content_file)

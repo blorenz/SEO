@@ -69,6 +69,7 @@ INSTALLED_APPS = [
     'uploadcolumbus.base',
     'general',
 
+    'gunicorn',
     # Local apps, referenced via uploadcolumbus.appname
 ]
 

@@ -26,7 +26,7 @@ def home(request):
             song_forms = SongForm(request.POST, request.FILES)
             initialData = {'bound': True, }
             if band_form.is_valid() and song_form.is_valid() and song_forms.is_valid():
-                handle_uploaded_files(request.FILES)
+                handle_uploaded_files(request.FILES, request.POST)
                 return HttpResponseRedirect('/thanks-columbus/')
     else:
         band_form = BandForm()
@@ -42,3 +42,13 @@ def home(request):
 
 #    return render_to_response('base/home.html', context_instance=RequestContext(request))
     return render_to_response('base/home.html', c)
+
+
+def thanks(request):
+    c = RequestContext(request)
+    return render_to_response('base/thanks.html',c)
+
+
+def legal(request):
+    c = RequestContext(request)
+    return render_to_response('base/legal.html',c)

@@ -1,58 +1,12 @@
 {% extends "base.html" %}
-{% load add_class %}
-
 {% block page_class %}home-page{% endblock %}
 {% block content %}
 <div id="center-lane">
-    <div id="unsigned-artists">
-        <img src="{{ STATIC_URL }}img/unsigned-artists.png" alt="" />
-    </div>
 <div id="upload-form-container">
 <div id="upload-form">
-<form action="/" enctype='multipart/form-data' method="post">
-<span id="copy">
-Want to reach more fans than ever before?  Upload your best tracks to gain more exposure to new listeners!  App to launch 6.22.12!
-</span>
-    {% csrf_token %}
-    <div id="form-fields">
-    {{ band_form.band_name|add_class:"wide"|add_placeholder:"Band/Artist name" }}
-    {{ band_form.band_name.errors }}
-    <p>Band email contact: {{ band_form.band_email }} </p>
-    {{ band_form.band_email.errors }}
-    <p>Typical genre: {{ band_form.band_genres}} </p>
-    <p>Band image: {{ band_form.band_image }}</p>
-    {{ band_form.band_bio|add_class:"wide"|add_placeholder:"Band/Artist bio" }}
-    {{ band_form.band_bio.errors }}
-    {{ band_form.band_gigs|add_class:"wide"|add_placeholder:"Band/Artist upcoming gigs" }}
-    {{ band_form.band_gigs.errors }}
-
-    {{ song_form.song_name|add_placeholder:"Song name"|add_class:"wide" }}
-    {{ song_form.song_name.errors }}
-    <p>Song file: {{ song_form.song_file }}</p>
-    {{ song_form.song_file.errors }}
-    <div>
-        <a class="lyrics-reveal">Got some lyrics? <span class="add-click">+<span></a>
-        {{ song_form.song_lyrics|add_placeholder:"Song lyrics"|add_class:"lyrics" }}
-        {{ song_form.song_lyrics.errors }}
-    </div>
-    {% for song_form in song_forms %}
-       
-    <div class="song">
-            {{ song_form.song_name|add_placeholder:"Song name"|add_class:"wide" }}
-            <p>Song file: {{ song_form.song_file }}</p>
-            <div>
-                <a class="lyrics-reveal">Got some lyrics? <span class="add-click">+<span></a>
-                {{ song_form.song_lyrics|add_placeholder:"Song lyrics"|add_class:"lyrics" }}
-                {{ song_form.song_lyrics.errors }}
-            </div>
-        </div>
-    {% endfor %}
-    {% if not bound %}
-    <a class="song-reveal">Add another song? <span class="add-click">+<span></a>
-    {% endif %}
-    </div>
-    <div id="legal-text">
-
+<div class="legal-page">
+<div class="iphone-block"></div>
+<a href="/"><b>&lt;&lt; Back to Upload Columbus!</b></a>
 <h3>Terms of Service</h3>
 <p>By submitting your Content (sound recordings, images, writings, and any other potentially copyrightable items) to www.uploadcolumbus.com, you agree to the following:
 The content you submit will be used for a music streaming mobile application and website currently called Cannon.FM, but subject to change. We do not guarantee any confidentiality regarding any Content you submit.
@@ -82,13 +36,7 @@ If you’re affiliated with a performing rights organization or collection agenc
 <p>232 North 3rd Street, Suite 202, Columbus, Ohio 43215
 <p>NOTE: Pursuant to section 512(f) of the DMCA:
 <p>Any person who knowingly materially misrepresents under this section that material or activity was removed or disabled by mistake or misidentification, shall be liable for any damages, including costs and attorneys' fees, incurred by the alleged infringer, by any copyright owner or copyright owner's authorized licensee, or by a service provider, who is injured by such misrepresentation, as the result of the service provider relying upon such misrepresentation in removing or disabling access to the material or activity claimed to be infringing, or in replacing the removed material or ceasing to disable access to it.
-<p>Now the legal stuff.....
-<p>By clicking the upload button you agree to our full terms of service and understand that we will use your music to be broadcast through our mobile phone and web applications. Also, by clicking the upload button you are stating that you are authorized and have permission by your bandmembers to upload your music, album art and band information. Once you click the upload button, you agree that we are able to use your music and album art to promote the growth of our applications and, in turn, agree to nationwide publicity with the possibility of millions of new fans and touring contracts.  We will not sell or own the licensing of your music or album artwork, however, we are entitled to play your music and display your artwork in exchange for advertising and promotional purposes. 
-    </div>
-<p class="legal-check"><input type="checkbox" class="lc"> I agree to the full terms of service.</p>
-    <input class="submit disabled" type="submit" value="Upload" />
-
-</form>
+</div>
 </div>
 </div>
 </div>

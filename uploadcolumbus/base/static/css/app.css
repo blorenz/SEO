@@ -13,7 +13,6 @@ body {
 
 #container {
     background:url(../img/background.jpg);
-
     min-width: 940px;
     height: 100%;
     background-position: center top;
@@ -26,12 +25,16 @@ body {
     margin: 0 auto;
 }
 
+#header {
+    height: 150px;
+    width: 100%;
+}
+
 #upload-form-container {
     position: relative;
     width:940px;
     background-color: #a19f9f;
-    top: 150px;
-    margin: 0 auto 0;
+    margin: 0px auto 0;
     padding: 25px 0;
 }
 
@@ -42,7 +45,7 @@ body {
     background-color: #828282;
 }
 
-#upload-form form {
+#upload-form form, .legal-page {
     background: url(../img/form-bg.jpg);
     background-repeat: no-repeat no-repeat;
     padding-bottom: 25px;
@@ -50,16 +53,30 @@ body {
 
 #unsigned-artists {
     position: absolute;
-    top: 130px;
+    top: -20px;
     z-index: 100;
     left: -15px;
 }
 
-#copy {
+#copy, #copy p {
 font-size: 24px;
 color: white;
 text-shadow: black 2px 2px 3px;
 width: 600px;
+display: block;
+line-height: 28px;
+padding-top: 50px;
+padding-left: 30px;
+}
+
+#copy p {
+    padding-top: 10px;
+}
+
+h1 {
+font-size: 40px;
+color: white;
+text-shadow: black 2px 2px 3px;
 display: block;
 line-height: 28px;
 padding-top: 50px;
@@ -79,7 +96,9 @@ padding:20px;
 margin: 30px 5px 15px;
 background-color: #dddddd;
 color: #666666;
-padding: 20px;
+padding: 15px;
+overflow: auto;
+height: 200px;
 }
 
 #legal-text p {
@@ -95,6 +114,7 @@ text-align: center;
 
 .song {
  display: none; 
+ margin-top: 30px;
 }
 
 input.submit {
@@ -159,4 +179,20 @@ display: block;
 .errorlist {
 color: #bf1515;
 font-weight: 800;
+}
+
+ .legal-page h3, .legal-page h5 {
+  color: white;
+}
+
+.legal-page {
+    color:white;
+    padding: 20px;
+    min-height:500px;
+}
+
+.iphone-block {
+width: 300px;
+height:500px;
+float: right;
 }
